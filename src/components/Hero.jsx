@@ -13,23 +13,25 @@ export default function Hero() {
               <h1
                 onMouseEnter={() => {setIsTitleHovered(true)}}
                 onMouseLeave={() => {setIsTitleHovered(false)}}
-                className="text-[4.5vw] text-center text-white py-10 font-bold">
+                className="text-[5.5vw] text-center text-white py-10 font-bold">
                 Juan Antonio Gonzalez
             </h1>
             <div className="flex justify-between pb-5">
                 <h3
                     onMouseEnter={() => {setIsSubtitleHovered(true)}}
                     onMouseLeave={() => {setIsSubtitleHovered(false)}}
-                    className="text-[2.5vw] text-white">Vancouver, BC</h3>
+                    className="text-[3vw] text-white">Vancouver, BC</h3>
+                {/* <svg width="100px" height="100px" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" ariaHidden="true" role="img" class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet"><path fill="#D52B1E" d="M4 5a4 4 0 0 0-4 4v18a4 4 0 0 0 4 4h6V5H4zm28 0h-6v26h6a4 4 0 0 0 4-4V9a4 4 0 0 0-4-4z"></path><path fill="#EEE" d="M10 5h16v26H10z"></path><path fill="#D52B1E" d="M18.615 22.113c1.198.139 2.272.264 3.469.401l-.305-1.002a.46.46 0 0 1 .159-.476l3.479-2.834l-.72-.339c-.317-.113-.23-.292-.115-.722l.531-1.936l-2.021.427c-.197.03-.328-.095-.358-.215l-.261-.911l-1.598 1.794c-.227.288-.687.288-.544-.376l.683-3.634l-.917.475c-.257.144-.514.168-.657-.089l-1.265-2.366v.059v-.059l-1.265 2.366c-.144.257-.401.233-.658.089l-.916-.475l.683 3.634c.144.664-.317.664-.544.376l-1.598-1.793l-.26.911c-.03.12-.162.245-.359.215l-2.021-.427l.531 1.936c.113.43.201.609-.116.722l-.72.339l3.479 2.834c.138.107.208.3.158.476l-.305 1.002l3.47-.401c.106 0 .176.059.175.181l-.214 3.704h.956l-.213-3.704c.002-.123.071-.182.177-.182z"></path></svg> */}
+                
                 <h3
                     onMouseEnter={() => {setIsSubtitleHovered(true)}}
                     onMouseLeave={() => {setIsSubtitleHovered(false)}}
-                    className="text-[2.5vw] text-white">Fullstack Software Developer</h3>
+                    className="text-[3vw] text-white">Fullstack Software Developer</h3>
             </div>  
             <div className="flex justify-center">
                 <GsapMagnetic>
                    <svg className="p-3" width="80" height="100" viewBox="-5 -1 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="31.636" cy="31.9655" r="30" stroke="white" stroke-width="3"/>
+                        <circle cx="31.636" cy="31.9655" r="30" stroke="white" strokeWidth="3"/>
                         <path d="M21.4957 31.4656C21.4957 32.3189 21.6891 33.0589 22.0757 33.6856C22.4624 34.2989 22.9691 34.7656 23.5957 35.0856C24.2357 35.4056 24.9357 35.5656 25.6957 35.5656C26.3624 35.5656 26.9491 35.4789 27.4557 35.3056C27.9624 35.1322 28.4157 34.9056 28.8157 34.6256C29.2157 34.3456 29.5691 34.0456 29.8757 33.7256V37.3656C29.3157 37.8056 28.7024 38.1522 28.0357 38.4056C27.3691 38.6589 26.5224 38.7856 25.4957 38.7856C24.3757 38.7856 23.3424 38.6122 22.3957 38.2656C21.4491 37.9189 20.6357 37.4189 19.9557 36.7656C19.2757 36.1122 18.7491 35.3389 18.3757 34.4456C18.0024 33.5522 17.8157 32.5589 17.8157 31.4656C17.8157 30.3722 18.0024 29.3789 18.3757 28.4856C18.7491 27.5922 19.2757 26.8189 19.9557 26.1656C20.6357 25.5122 21.4491 25.0122 22.3957 24.6656C23.3424 24.3189 24.3757 24.1456 25.4957 24.1456C26.5224 24.1456 27.3691 24.2722 28.0357 24.5256C28.7024 24.7789 29.3157 25.1256 29.8757 25.5656V29.2056C29.5691 28.8856 29.2157 28.5856 28.8157 28.3056C28.4157 28.0122 27.9624 27.7856 27.4557 27.6256C26.9491 27.4522 26.3624 27.3656 25.6957 27.3656C24.9357 27.3656 24.2357 27.5256 23.5957 27.8456C22.9691 28.1656 22.4624 28.6322 22.0757 29.2456C21.6891 29.8589 21.4957 30.5989 21.4957 31.4656ZM38.2062 32.8256L41.6262 24.4656H45.5862L38.2062 39.3456L30.8462 24.4656H34.7862L38.2062 32.8256Z" fill="white"/>
                     </svg> 
                 </GsapMagnetic>
