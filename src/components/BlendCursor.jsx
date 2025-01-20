@@ -2,8 +2,8 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-export default function BlendCursor({isHovered}) {
-    const size = isHovered ? 300 : 30;
+export default function BlendCursor({isTitleHovered, isSubtitleHovered}) {
+    const size = isTitleHovered ? 200 : isSubtitleHovered ? 100 : 30;
     const colors = [
 
         "#c32d27",
@@ -69,7 +69,7 @@ export default function BlendCursor({isHovered}) {
                         backgroundColor: color,
                         width: size,
                         height: size,
-                        filter: `blur(${isHovered ? 20 : 2}px)`,
+                        filter: `blur(${isTitleHovered ? 15 : isSubtitleHovered ? 10 : 2 }px)`,
                         transition: `height 0.3s ease-out, width 0.3s ease-out, filter 0.3s ease-out,
                         transform ${(array.length - i) * 0.1}s ease-out`
                     }}
