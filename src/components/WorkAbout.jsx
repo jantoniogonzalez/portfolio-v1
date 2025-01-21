@@ -9,36 +9,34 @@ import {
     CardHeader,
     CardTitle,
   } from "@/components/ui/card"
+  import { Badge } from "@/components/ui/badge"
 import SwitchboardIcon from "../../public/images/switchboard-icon.png"
 import SFUIcon from "../../public/images/SFU-block-logo.png"
 import Image from "next/image"  
 
+
 export default function WorkAbout() {
     return (
         <div className="h-[100vw] flex justify-center">
-            <Tabs defaultValue="work" className="max-w-[70vw]">
-                <TabsList className="min-w-[50vw] max-w-[70vw] h-fit bg-transparent">
-                    <TabsTrigger className="text-[3vw] w-full bg-transparent" value="work">Work</TabsTrigger>
-                    <TabsTrigger className="text-[3vw] w-full" value="education">Education</TabsTrigger>
+            <Tabs defaultValue="work" className="w-[70vw]">
+                <TabsList className="grid grid-cols-2 min-w-[50vw] max-w-[70vw] h-fit bg-transparent ">
+                    <TabsTrigger className="text-[2vw] w-full" value="work">Work</TabsTrigger>
+                    <TabsTrigger className="text-[2vw] w-full" value="education">Education</TabsTrigger>
                 </TabsList>
                 <TabsContent value="work">
                     <Card className="bg-transparent">
-                        {/* <CardContent>
-                            <CardDescription className="text-slate-300 text-[2vw] font-light">May 2023 - December 2023</CardDescription>
-                            <div className="flex gap-3 items-center h-fit">
-                                <span className=" h-[5vw] aspect-[2/2] rounded-sm ">
-                                    <Image className="border-solid border-1 border-black" style={{objectFit: "cover"}} src={SwitchboardIcon} alt="Switchboard Logo" />
-                                </span>
-                                <CardTitle className="text-[2.5vw] font-medium text-white">Switchboard</CardTitle>
-                            </div>
-                            <CardDescription className="text-slate-300 text-[2vw] font-light">Web Software Developer</CardDescription>
-                        </CardContent> */}
                         <CardCustomItem
                             dates="May 2023 - December 2023"
                             companyLogo={SwitchboardIcon}
                             companyName="Switchboard"
-                            jobTitle="Web Software Developer"
-                            achievements={["Redesigned", "Created", "Led"]}
+                            jobTitle="Web Software Developer - Co-op"
+                            sectionSubtitle="Key Achievements"
+                            achievements={[
+                                "Redesigned and implemented the check-out page for dispatchers.",
+                                "Designed and developed a multi-step modal to download and send trucker logs.",
+                                "Led and planned web-team and cross-team meetings."
+                            ]}
+                            chips={["React", "NodeJS", "Figma", "SCSS", "Parse Server"]}
                         />
                     </Card>
                 </TabsContent>
@@ -49,45 +47,53 @@ export default function WorkAbout() {
                             companyLogo={SFUIcon}
                             companyName="Simon Fraser University"
                             jobTitle="BSc of Applied Sciences (Computer Science Major)"
-                            achievements={["Hello", "Hello", "Hello"]}
+                            sectionSubtitle="Relevant Coursework"
+                            achievements={[
+                                "Software Development Methods & Testing",
+                                "Database Systems I & II",
+                                "Distributed Systems",
+                                "Operating Systems",
+                                "Web Backend Development"
+                            ]}
                         />
                     </Card>
                 </TabsContent>
             </Tabs>
-            {/* <h2 className="text-[4.5vw] text-white">Work & Education</h2> */}
         </div>
     )
 }
 
-const CardCustomItem = ({dates, companyLogo, companyName, jobTitle, achievements}) => {
+const CardCustomItem = ({dates, companyLogo, companyName, jobTitle, sectionSubtitle, achievements, chips}) => {
     return (
-        <CardContent>
-            <CardDescription className="text-slate-300 text-[2vw] font-light">{dates}</CardDescription>
-            <div className="flex gap-3 items-center h-fit">
+        <CardContent className="p-5 w-max">
+            <CardDescription className="text-slate-300 text-[1.5vw] font-light">{dates}</CardDescription>
+            <div className="flex gap-3 items-center h-fit py-3">
                 <span className=" h-[5vw] aspect-[2/2] rounded-md">
-                    <Image className="border-solid border-1 border-black " style={{objectFit: "cover"}} src={companyLogo} alt="Switchboard Logo" />
+                    <Image className="rounded-md" style={{objectFit: "fill"}} src={companyLogo} alt="Switchboard Logo" />
                 </span>
-                <CardTitle className="text-[2.5vw] font-medium text-white">{companyName}</CardTitle>
+                <CardTitle className="text-[2vw] font-medium text-white">{companyName}</CardTitle>
             </div>
-            <CardDescription className="text-slate-300 text-[2vw] font-light">{jobTitle}</CardDescription>
-            <CardDescription>Example: {achievements[0]}</CardDescription>
-            {
-                achievements.map((achievement, id) => {
-                    return(
-                        <CardContent key={id}>{achievement}</CardContent>
-                    )
-                })
-            }
+            <CardDescription className="text-slate-300 text-[1.5vw] font-light">{jobTitle}</CardDescription>
+            <CardTitle className="text-[1.75vw] font-normal text-white">{sectionSubtitle}</CardTitle>
             <CardDescription>
-                <ul>
+                <ul className="list-inside list-disc text-slate-200 text-[1.5vw] pl-[1vw]">
                 {
-                    achievements.forEach((achievement, id) => {
+                    achievements.map((achievement, id) => {
                         return (
-                            <li key={id}>{achievement}</li>
+                            <li className="py-[1vw]" key={id}>{achievement}</li>
                         )
                     })
                 }
                 </ul>
+                <div className="flex gap-2">
+                    {
+                        chips && chips.map((chip, id) => {
+                            return (
+                                <Badge className="text-[1.5vw] py-[0.5vw]" key={id}>{chip}</Badge>
+                            )
+                        }) 
+                    }
+                </div>
             </CardDescription>
             
         </CardContent>
