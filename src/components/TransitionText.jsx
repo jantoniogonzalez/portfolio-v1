@@ -28,7 +28,7 @@ export default function TransitionText() {
     });
 
     return (
-        <div className="h-[50vh] overflow-hidden">
+        <div className="h-[100vh] overflow-hidden">
             <div ref={container}>
                 <Slider text="Adventurer" src={AdventurerPic} left="-40%" progress={scrollYProgress} direction={200} />
                 <Slider text="Swimmmer" src={FloatingPic} left="-15%" progress={scrollYProgress} direction={-250}/>
