@@ -18,8 +18,9 @@ export default function Hero() {
             transition: {
                 type: "spring",
                 staggerChildren: 0.5,
-                duration: 3,
+                duration: 1.5,
                 bounce: 0.1,
+                stiffness: 15,
             }
         }
     }
