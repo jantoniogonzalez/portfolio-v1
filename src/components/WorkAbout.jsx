@@ -17,14 +17,14 @@ import Image from "next/image"
 
 export default function WorkAbout() {
     return (
-        <div className="h-[100vw] flex justify-center">
-            <Tabs defaultValue="work" className="w-[70vw]">
-                <TabsList className="grid grid-cols-2 min-w-[50vw] max-w-[70vw] h-fit bg-transparent ">
+        <div className="h-[100vh] flex justify-center bg-[#282828] items-center">
+            <Tabs defaultValue="work" className="w-[50vw]">
+                <TabsList className="grid grid-cols-2 w-[50vw] h-fit bg-transparent text-wrap">
                     <TabsTrigger className="text-[2vw] w-full" value="work">Work</TabsTrigger>
                     <TabsTrigger className="text-[2vw] w-full" value="education">Education</TabsTrigger>
                 </TabsList>
                 <TabsContent value="work">
-                    <Card className="bg-transparent">
+                    <Card className="bg-transparent ">
                         <CardCustomItem
                             dates="May 2023 - December 2023"
                             companyLogo={SwitchboardIcon}
@@ -65,7 +65,7 @@ export default function WorkAbout() {
 
 const CardCustomItem = ({dates, companyLogo, companyName, jobTitle, sectionSubtitle, achievements, chips}) => {
     return (
-        <CardContent className="p-5 w-max">
+        <CardContent className="p-5 w-inherit">
             <CardDescription className="text-slate-300 text-[1.5vw] font-light">{dates}</CardDescription>
             <div className="flex gap-3 items-center h-fit py-3">
                 <span className=" h-[5vw] aspect-[2/2] rounded-md">
@@ -80,7 +80,7 @@ const CardCustomItem = ({dates, companyLogo, companyName, jobTitle, sectionSubti
                 {
                     achievements.map((achievement, id) => {
                         return (
-                            <li className="py-[1vw]" key={id}>{achievement}</li>
+                            <li className="p-[1vw] text-wrap leading-[2vw]" key={id}>{achievement}</li>
                         )
                     })
                 }

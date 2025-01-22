@@ -8,9 +8,9 @@ export default function Home() {
   return (
     <main>
       <Hero/>
-      <TransitionText/>
       <WorkAbout/>
       <Projects/>
+      <TransitionText/>
     </main>
   );
 }
