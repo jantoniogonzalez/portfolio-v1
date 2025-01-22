@@ -27,7 +27,7 @@ export default function WorkAbout() {
     }
 
     return (
-        <div ref={ref} className="h-[100vh] flex justify-center bg-[#282828] items-center snap-mandatory">
+        <div ref={ref} className="h-[100vh] relative flex justify-center bg-[#282828] items-center snap-mandatory">
             <motion.div
                 style={{scaleX: scrollYProgress, scaleY: scrollYProgress }}
                 className="snap-center"
@@ -78,6 +78,7 @@ export default function WorkAbout() {
                 </TabsContent>
             </Tabs>
             </motion.div>
+            <p className="absolute -rotate-90 left-1 text-[3rem] text-slate-200 opacity-50 font-extrabold tracking-tighter">I.Work</p>
         </div>
     )
 }

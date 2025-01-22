@@ -58,6 +58,9 @@ export default {
   	},
 	listStyleType: {
 		disc: "disc"
+	},
+	fontFamily: {
+		'logo': ['var(--font-kenia)'],
 	}
   },
   plugins: [require("tailwindcss-animate")],
