@@ -42,30 +42,37 @@ export default function Hero() {
                 initial="hidden"
                 animate="show"
             >
-                <motion.h1
-                    onMouseEnter={() => {setIsTitleHovered(true)}}
-                    onMouseLeave={() => {setIsTitleHovered(false)}}
-                    className="text-[6rem] tracking-[-0.5rem] text-center text-white mb-3 font-bold"
-                    variants={titleItem}
-                >
-                    JUAN GONZALEZ
-                </motion.h1>
-                <motion.h3
-                    onMouseEnter={() => {setIsSubtitleHovered(true)}}
-                    onMouseLeave={() => {setIsSubtitleHovered(false)}}
-                    className="text-[2rem] tracking-tight text-center text-white"
-                    variants={titleItem}  
-                >
-                    Fullstack Software Developer
-                </motion.h3>
-                <motion.h3
-                    onMouseEnter={() => {setIsSubtitleHovered(true)}}
-                    onMouseLeave={() => {setIsSubtitleHovered(false)}}
-                    className="text-[2rem] tracking-tight text-center text-white"
-                    variants={titleItem}
-                >
-                    Based in Vancouver, BC
-                </motion.h3>
+                <div className="w-full flex justify-center items-center">
+                    <motion.h1
+                        onMouseEnter={() => {setIsTitleHovered(true)}}
+                        onMouseLeave={() => {setIsTitleHovered(false)}}
+                        className="text-[6rem] tracking-[-0.5rem] text-center text-white mb-3 font-bold w-fit"
+                        variants={titleItem}
+                    >
+                        JUAN GONZALEZ
+                    </motion.h1>
+                </div>
+                <div className="w-full flex justify-center items-center">
+                    <motion.h3
+                        onMouseEnter={() => {setIsSubtitleHovered(true)}}
+                        onMouseLeave={() => {setIsSubtitleHovered(false)}}
+                        className="text-[2rem] tracking-tight text-center text-white w-fit"
+                        variants={titleItem}  
+                    >
+                        Fullstack Software Developer
+                    </motion.h3>
+                </div>
+                <div className="w-full flex justify-center items-center">
+                    <motion.h3
+                        onMouseEnter={() => {setIsSubtitleHovered(true)}}
+                        onMouseLeave={() => {setIsSubtitleHovered(false)}}
+                        className="text-[2rem] tracking-tight text-center text-white w-fit"
+                        variants={titleItem}
+                    >
+                        Based in Vancouver, BC
+                    </motion.h3>
+                </div>
+                    
                 <motion.div
                     className="flex pt-[2rem] justify-center "
                     variants={titleItem}
