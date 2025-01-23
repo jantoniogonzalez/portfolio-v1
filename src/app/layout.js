@@ -14,6 +14,8 @@ const kenia = Kenia({
 export const metadata = {
   title: "Juan Antonio Gonzalez",
   description: "Software Developer Portfolio",
+  name:"viewport",
+  content:"width=device-width, initial-scale=1.0"
 };
 
 export default function RootLayout({ children }) {

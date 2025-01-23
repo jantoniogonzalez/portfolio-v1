@@ -27,7 +27,7 @@ export default function WorkAbout() {
     }
 
     return (
-        <div ref={ref} className="h-[100vh] relative flex justify-center bg-[#282828] items-center snap-mandatory">
+        <div ref={ref} className="h-[100vh] bg-[#282828] flex justify-center items-center">
             <motion.div
                 style={{scaleX: scrollYProgress, scaleY: scrollYProgress }}
                 className="snap-center"
@@ -91,7 +91,7 @@ const CardCustomItem = ({dates, companyLogo, companyName, jobTitle, sectionSubti
                 <span className=" h-[5vw] aspect-[2/2] rounded-md">
                     <Image className="rounded-md" style={{objectFit: "fill"}} src={companyLogo} alt="Switchboard Logo" />
                 </span>
-                <CardTitle className="text-[1.75rem] font-medium text-white">{companyName}</CardTitle>
+                <CardTitle className="text-[1.75rem] font-medium uppercase text-white">{companyName}</CardTitle>
             </div>
             <CardDescription className="text-slate-300 text-[1.25rem] font-light">{jobTitle}</CardDescription>
             <CardTitle className="text-[1.5rem] font-normal text-white">{sectionSubtitle}</CardTitle>

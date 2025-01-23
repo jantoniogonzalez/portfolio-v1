@@ -1,35 +1,83 @@
 'use client'
-import React from "react";
+import React, { useRef } from "react";
 import SocialGamingPic from '../../public/images/socialgaming-screenshot.png'
 import WinnablePic from '../../public/images/winnable-landing.png'
 import FactosPic from '../../public/images/factos-screenshot.png'
 import Image from "next/image";
-import {motion} from "motion/react"
+import {motion, useScroll, useTransform} from "motion/react"
 
 export default function Projects() {
     return (
-        <div className="min-h-[100vh] bg-[#3b3b3b] py-[2vw] flex justify-center items-center">
-            <motion.div className="w-[60vw] flex flex-col gap-y-[2.5vw]">
-                <Project projectImg={FactosPic} title="Factos" dates="June 2024 - Ongoing" description="poop" order="order-first" />
-                <Project projectImg={WinnablePic} title="Winnable" dates="February 2024 - April 2024" description="poop" order="order-last"/>
-                <Project projectImg={SocialGamingPic} title="SocialGaming" dates="October 2024 - December 2024" description="poop" order="order-first" />
-            </motion.div>
-            <p className="absolute -rotate-90 left-1 text-[3rem] text-slate-200 opacity-50 font-extrabold tracking-tighter">II.Projects</p>
+        <div className="min-h-[100vh] bg-[#3b3b3b] py-[2vw] flex justify-center items-center overflow-hidden">
+            <div className="w-[80vw] flex flex-col gap-y-[2.5vw]">
+                <Project
+                    projectImg={FactosPic}
+                    title="Factos"
+                    roles="Solo Project"
+                    description="Web application to save, share and challenge friends to predict football matches."
+                    order="flex-row"
+                />
+                <Project
+                    projectImg={WinnablePic}
+                    title="Winnable"
+                    roles="Front-end, Websockets, Authentication"
+                    description="Web application to organize gaming decathlons."
+                    order="flex-row-reverse"
+                />
+                <Project
+                    projectImg={SocialGamingPic}
+                    title="SocialGaming"
+                    roles="Language Parsing"
+                    description="Application to create games in a JSON-like language."
+                    order="flex-row" />
+            </div>
+            <p className="absolute -rotate-90 left-1 text-[3rem] text-slate-200 opacity-50 font-logo tracking-tighter">II.Projects</p>
         </div>
     )
 }
 
-const Project = ({projectImg, title, dates, description, technologies, link, order}) => {
+const Project = ({projectImg, title, roles, description, technologies, link, order}) => {
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({ target: ref });
+    const rotateImage = useTransform(
+        scrollYProgress,
+        [0.65, 0.75, 0.85, 1],
+        [0, 3, 5, 10]
+    )
+    const xImage = useTransform(
+        scrollYProgress,
+        [0.75, 1],
+        [0, 100]
+    )
+
+    const yText = useTransform(
+        scrollYProgress,
+        [0.75, 1],
+        [0, 100]
+    )
+
+    const opacityText = useTransform(
+        scrollYProgress,
+        [0.75, 1],
+        [1, 0]
+    )
+
     return (
-        <div className="grid grid-cols-2 gap-y-[2.5vw]" >
-            <span className={`relative h-[20vw] aspect-[3/2] rounded-sm ${order}`}>
+        <motion.div ref={ref} className={`flex flex-col w-full items-center gap-y-[1rem] lg:gap-x-[2rem] lg:${order} overflow-hidden`} >
+            <motion.span
+                className={`relative w-full lg:w-[60%] aspect-[3/2] rounded-xl overflow-hidden`}
+                style={{x: xImage,rotate: rotateImage, opacity: opacityText}}
+            >
                 <Image style={{objectFit: "cover"}} src={projectImg} alt="image" fill/>
-            </span>
-            <div>
-                <h3 className="text-white text-[1.75rem]">{title}</h3>
-                <h4 className="text-slate-300 text-[1.25rem]">{dates}</h4>
+            </motion.span>
+            <motion.div
+                className="w-full lg:w-[40%]"
+                style={{y: yText, opacity: opacityText}}
+            >
+                <h3 className="text-white text-[1.75rem] font-logo uppercase">{title}</h3>
+                <h4 className="text-slate-300 text-[1.25rem]">{roles}</h4>
                 <p className="text-slate-50 text-[1.25rem]">{description}</p>
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     )
 }
