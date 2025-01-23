@@ -41,37 +41,37 @@ const Project = ({projectImg, title, roles, description, technologies, link, ord
     const { scrollYProgress } = useScroll({ target: ref });
     const rotateImage = useTransform(
         scrollYProgress,
-        [0.65, 0.75, 0.85, 1],
+        [0.5, 0.65, 0.85, 1],
         [0, 3, 5, 10]
     )
     const xImage = useTransform(
         scrollYProgress,
-        [0.75, 1],
+        [0.5, 1],
         [0, 100]
     )
 
     const yText = useTransform(
         scrollYProgress,
-        [0.75, 1],
+        [0.5, 1],
         [0, 100]
     )
 
     const opacityText = useTransform(
         scrollYProgress,
-        [0.75, 1],
+        [0.5, 1],
         [1, 0]
     )
 
     return (
         <motion.div ref={ref} className={`flex flex-col w-full items-center gap-y-[1rem] lg:gap-x-[2rem] lg:${order} overflow-hidden`} >
             <motion.span
-                className={`relative w-full lg:w-[60%] aspect-[3/2] rounded-xl overflow-hidden`}
+                className={`relative w-full lg:w-[50%] aspect-[3/2] rounded-xl overflow-hidden`}
                 style={{x: xImage,rotate: rotateImage, opacity: opacityText}}
             >
                 <Image style={{objectFit: "cover"}} src={projectImg} alt="image" fill/>
             </motion.span>
             <motion.div
-                className="w-full lg:w-[40%]"
+                className="w-full lg:w-[50%]"
                 style={{y: yText, opacity: opacityText}}
             >
                 <h3 className="text-white text-[1.75rem] font-logo uppercase">{title}</h3>
