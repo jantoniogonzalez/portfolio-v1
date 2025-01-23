@@ -28,11 +28,11 @@ export default function TransitionText() {
     });
 
     return (
-        <div className="h-[100vh] overflow-hidden">
+        <div className="bg-gradient-to-b from-[#3b3b3b] to-[#525252] overflow-hidden">
             <div ref={container}>
-                <Slider text="Adventurer" src={AdventurerPic} left="-40%" progress={scrollYProgress} direction={200} />
-                <Slider text="Swimmmer" src={FloatingPic} left="-15%" progress={scrollYProgress} direction={-250}/>
-                <Slider text="Loves Animals" src={DogPic} left="-27.5%" progress={scrollYProgress} direction={250}/>
+                <Slider text="Amateur Hiker & Adventurer" src={AdventurerPic} left="-40%" progress={scrollYProgress} direction={200} />
+                <Slider text="Intermediate Swimmer & Water Stuff" src={FloatingPic} left="-15%" progress={scrollYProgress} direction={-250}/>
+                <Slider text="Professional Dog Petter" src={DogPic} left="-27.5%" progress={scrollYProgress} direction={250}/>
             </div>
         </div>
     )
@@ -57,7 +57,7 @@ const Slider = ({text, src, left, progress, direction}) => {
 const Phrase = ({text, src}) => {
     return (
         <div className={"flex px-5 gap-5 items-center"}>
-            <p className="text-[2.5vw] text-white">{text}</p>
+            <p className="text-[2rem] text-white">{text}</p>
             <span className="relative h-[7.5vw] aspect-[4/2] rounded-full overflow-hidden">
                 <Image style={{objectFit: "cover"}} src={src} alt="image" fill/>
             </span>

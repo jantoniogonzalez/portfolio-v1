@@ -35,7 +35,7 @@ export default function Hero() {
     }
 
     return (
-        <div className="h-[100vh] grid grid-cols-1 items-center justify-center">
+        <div className="h-[100vh] bg-[#222222] grid grid-cols-1 items-center justify-center">
             <motion.div
                 className="z-20 max-w-[100vw]"
                 variants={titleContainer}

@@ -1,10 +1,11 @@
 'use client'
-import React from "react"
-import { motion } from "motion/react"
-import GsapMagnetic from "./GsapMagnetic"
-
+import React, { useState } from "react";
+import { motion } from "motion/react";
+import GsapMagnetic from "../GsapMagnetic";
 
 export default function Header() {
+
+    const [isActive, setIsActive] = useState(false);
 
     const headerContainer = {
         hidden: { y: -5, opacity: 0 },
@@ -50,10 +51,63 @@ export default function Header() {
                 variants={headerItem}
                 className="flex items-center"
             >
-                <GsapMagnetic>
-                    <p className="text-white text-[1.25rem]">Menu</p>
-                </GsapMagnetic>
+                    <MenuButton isActive={isActive} setIsActive={setIsActive} />
+                
             </motion.div>
         </motion.header>
+    )
+}
+
+const Menu = () => {
+
+}
+
+const MenuButton = ({isActive, setIsActive}) => {
+    const variants= {
+        open: {
+            width: 480,
+            height: 650,
+            opacity: 0.9,
+        },
+        closed: {
+            opacity: 0,
+            width: 0,
+            height: 0,
+        }
+    }
+
+    return(
+        <motion.div
+            className="overflow-hidden relative rounded-3xl"
+            onClick={() => setIsActive(!isActive)}
+        >
+            <motion.div
+                className="bg-white rounded-3xl"
+                variants={variants}
+                animate={isActive ? "open": "closed"}
+                initial="closed"
+            >
+
+            </motion.div>
+            <motion.div
+                className="z-10 absolute top-0 right-0"
+                animate={{top: isActive ? "-100%" : "0"}}
+                transition={{duration: 0.5, ease: [0.76, 0, 0.24, 1]}}
+            >
+                <GsapMagnetic>
+                    <p className="p-2 text-white text-[1.25rem]">Menu</p>
+                </GsapMagnetic>
+            </motion.div>
+            <motion.div
+                className="top-0 right-0"
+                initial={{opacity: 0}}
+                animate={{opacity: isActive ? "1" : "0"}}
+                transition={{ delay: 0.2, duration: 0.5, ease: [0.76, 0, 0.24, 1]}}
+            >
+                <GsapMagnetic>
+                    <p className="z-1 p-2 text-[#222222] text-[1.25rem]">Close</p>
+                </GsapMagnetic>
+            </motion.div>
+        </motion.div>
     )
 }

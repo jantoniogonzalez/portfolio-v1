@@ -14,6 +14,7 @@ export default function Projects() {
                 <Project projectImg={WinnablePic} title="Winnable" dates="February 2024 - April 2024" description="poop" order="order-last"/>
                 <Project projectImg={SocialGamingPic} title="SocialGaming" dates="October 2024 - December 2024" description="poop" order="order-first" />
             </motion.div>
+            <p className="absolute -rotate-90 left-1 text-[3rem] text-slate-200 opacity-50 font-extrabold tracking-tighter">II.Projects</p>
         </div>
     )
 }
