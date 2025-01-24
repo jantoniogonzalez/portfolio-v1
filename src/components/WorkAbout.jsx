@@ -78,7 +78,7 @@ export default function WorkAbout() {
                 </TabsContent>
             </Tabs>
             </motion.div>
-            <p className="absolute -rotate-90 left-1 text-[3rem] text-slate-200 opacity-50 font-extrabold tracking-tighter">I.Work</p>
+            <p className="absolute -rotate-90 left-1 text-[3rem] text-slate-200 opacity-50 font-logo tracking-tighter">I.Work</p>
         </div>
     )
 }
@@ -105,7 +105,7 @@ const CardCustomItem = ({dates, companyLogo, companyName, jobTitle, sectionSubti
                     })
                 }
                 </ul>
-                <div className="flex gap-2">
+                <div className="flex gap-2 flex-wrap">
                     {
                         chips && chips.map((chip, id) => {
                             return (

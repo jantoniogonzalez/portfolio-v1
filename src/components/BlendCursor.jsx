@@ -64,7 +64,7 @@ export default function BlendCursor({isTitleHovered, isSubtitleHovered}) {
                 return <div
                     ref={ref => circles.current[i] = ref}
                     key={color}
-                    className='fixed top-0 left-0 rounded-full mix-blend-difference pointer-events-none'
+                    className='fixed z-10 top-0 left-0 rounded-full mix-blend-difference pointer-events-none'
                     style={{
                         backgroundColor: color,
                         width: size,

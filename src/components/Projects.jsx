@@ -5,6 +5,7 @@ import WinnablePic from '../../public/images/winnable-landing.png'
 import FactosPic from '../../public/images/factos-screenshot.png'
 import Image from "next/image";
 import {motion, useScroll, useTransform} from "motion/react"
+import { Badge } from "./ui/badge";
 
 export default function Projects() {
     return (
@@ -15,6 +16,7 @@ export default function Projects() {
                     title="Factos"
                     roles="Solo Project"
                     description="Web application to save, share and challenge friends to predict football matches."
+                    technologies={["Golang", "MySql"]}
                     order="flex-row"
                 />
                 <Project
@@ -22,6 +24,7 @@ export default function Projects() {
                     title="Winnable"
                     roles="Front-end, Websockets, Authentication"
                     description="Web application to organize gaming decathlons."
+                    technologies={["React", "NodeJS", "MongoDB", "Google Cloud"]}
                     order="flex-row-reverse"
                 />
                 <Project
@@ -29,6 +32,7 @@ export default function Projects() {
                     title="SocialGaming"
                     roles="Language Parsing"
                     description="Application to create games in a JSON-like language."
+                    technologies={["C++"]}
                     order="flex-row" />
             </div>
             <p className="absolute -rotate-90 left-1 text-[3rem] text-slate-200 opacity-50 font-logo tracking-tighter">II.Projects</p>
@@ -41,13 +45,13 @@ const Project = ({projectImg, title, roles, description, technologies, link, ord
     const { scrollYProgress } = useScroll({ target: ref });
     const rotateImage = useTransform(
         scrollYProgress,
-        [0.5, 0.65, 0.85, 1],
-        [0, 3, 5, 10]
+        [0.5, 0.60, 0.70, 0.80, 0.90, 1],
+        [0, 2, 4, 5, 7, 10]
     )
     const xImage = useTransform(
         scrollYProgress,
-        [0.5, 1],
-        [0, 100]
+        [0.5, 0.60, 0.70, 0.80, 0.90, 1],
+        [0, 20, 30, 40, 70, 100]
     )
 
     const yText = useTransform(
@@ -77,6 +81,15 @@ const Project = ({projectImg, title, roles, description, technologies, link, ord
                 <h3 className="text-white text-[1.75rem] font-logo uppercase">{title}</h3>
                 <h4 className="text-slate-300 text-[1.25rem]">{roles}</h4>
                 <p className="text-slate-50 text-[1.25rem]">{description}</p>
+                <div className="flex gap-2 flex-wrap">
+                    {
+                        technologies && technologies.map((technology, id) => {
+                            return (
+                                <Badge className="text-[1rem] py-[0.5vw]" key={id}>{technology}</Badge>
+                            )
+                        }) 
+                    }
+                </div>
             </motion.div>
         </motion.div>
     )
