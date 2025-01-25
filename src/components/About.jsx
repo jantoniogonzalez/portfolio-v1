@@ -1,10 +1,13 @@
 'use client'
 import React from "react"
+import SectionSubtitle from "./subtitles/SectionSubtitle"
+import TransitionText from "./TransitionText"
 
 export default function About() {
     return (
-        <div className="h-[100vh] bg-[#525252] flex justify-center items-center">
-            <p className="absolute -rotate-90 left-1 text-[3rem] text-slate-200 opacity-50 font-extrabold tracking-tighter">III.About Me</p>
+        <div className="h-[100vh] flex flex-col items-center overflow-hidden">
+            <SectionSubtitle titleName="More About Me" />
+            <TransitionText /> 
         </div>
     )
 }

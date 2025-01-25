@@ -14,6 +14,7 @@ import SwitchboardIcon from "../../public/images/switchboard-icon.png"
 import SFUIcon from "../../public/images/SFU-block-logo.png"
 import Image from "next/image"  
 import { motion, useScroll, useTransform } from "motion/react";
+import SectionSubtitle from "./subtitles/SectionSubtitle"
 
 
 export default function WorkAbout() {
@@ -27,58 +28,58 @@ export default function WorkAbout() {
     }
 
     return (
-        <div ref={ref} className="h-[100vh] bg-[#282828] flex justify-center items-center">
+        <div ref={ref} className="min-h-[100vh] py-[2rem] flex flex-col justify-center items-center">
+            <SectionSubtitle titleName="Experience" />
             <motion.div
                 style={{scaleX: scrollYProgress, scaleY: scrollYProgress }}
                 className="snap-center"
                 // The rotateX can be transformed like , rotateX: (1-scrollYProgress)*90 window
             >
-            <Tabs
-                defaultValue="work"
-                className="w-[50vw]"
-            >
-                <TabsList className="grid grid-cols-2 w-[50vw] h-fit bg-transparent text-wrap">
-                    <TabsTrigger className="text-[1.75rem] w-full" value="work">Work</TabsTrigger>
-                    <TabsTrigger className="text-[1.75rem] w-full" value="education">Education</TabsTrigger>
-                </TabsList>
-                <TabsContent value="work">
-                    <Card className="bg-transparent ">
-                        <CardCustomItem
-                            dates="May 2023 - December 2023"
-                            companyLogo={SwitchboardIcon}
-                            companyName="Switchboard"
-                            jobTitle="Web Software Developer - Co-op"
-                            sectionSubtitle="Key Achievements"
-                            achievements={[
-                                "Redesigned and implemented the check-out page for dispatchers.",
-                                "Designed and developed a multi-step modal to download and send trucker logs.",
-                                "Led and planned web-team and cross-team meetings."
-                            ]}
-                            chips={["React", "NodeJS", "Figma", "SCSS", "Parse Server"]}
-                        />
-                    </Card>
-                </TabsContent>
-                <TabsContent value="education">
-                    <Card className="bg-transparent">
-                        <CardCustomItem
-                            dates="January 2021 - May 2025"
-                            companyLogo={SFUIcon}
-                            companyName="Simon Fraser University"
-                            jobTitle="BSc of Applied Sciences (Computer Science Major)"
-                            sectionSubtitle="Relevant Coursework"
-                            achievements={[
-                                "Software Development Methods & Testing",
-                                "Database Systems I & II",
-                                "Distributed Systems",
-                                "Operating Systems",
-                                "Web Backend Development"
-                            ]}
-                        />
-                    </Card>
-                </TabsContent>
-            </Tabs>
+                <Tabs
+                    defaultValue="work"
+                    className="w-[50vw]"
+                >
+                    <TabsList className="grid grid-cols-2 w-[50vw] h-fit bg-transparent text-wrap">
+                        <TabsTrigger className="text-[1.75rem] w-full" value="work">Work</TabsTrigger>
+                        <TabsTrigger className="text-[1.75rem] w-full" value="education">Education</TabsTrigger>
+                    </TabsList>
+                    <TabsContent value="work">
+                        <Card className="bg-transparent ">
+                            <CardCustomItem
+                                dates="May 2023 - December 2023"
+                                companyLogo={SwitchboardIcon}
+                                companyName="Switchboard"
+                                jobTitle="Web Software Developer - Co-op"
+                                sectionSubtitle="Key Achievements"
+                                achievements={[
+                                    "Redesigned and implemented the check-out page for dispatchers.",
+                                    "Designed and developed a multi-step modal to download and send trucker logs.",
+                                    "Led and planned web-team and cross-team meetings."
+                                ]}
+                                chips={["React", "NodeJS", "Figma", "SCSS", "Parse Server"]}
+                            />
+                        </Card>
+                    </TabsContent>
+                    <TabsContent value="education">
+                        <Card className="bg-transparent">
+                            <CardCustomItem
+                                dates="January 2021 - May 2025"
+                                companyLogo={SFUIcon}
+                                companyName="Simon Fraser University"
+                                jobTitle="BSc of Applied Sciences (Computer Science Major)"
+                                sectionSubtitle="Relevant Coursework"
+                                achievements={[
+                                    "Software Development Methods & Testing",
+                                    "Database Systems I & II",
+                                    "Distributed Systems",
+                                    "Operating Systems",
+                                    "Web Backend Development"
+                                ]}
+                            />
+                        </Card>
+                    </TabsContent>
+                </Tabs>
             </motion.div>
-            <p className="absolute -rotate-90 left-1 text-[3rem] text-slate-200 opacity-50 font-logo tracking-tighter">I.Work</p>
         </div>
     )
 }

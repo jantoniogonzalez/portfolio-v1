@@ -1,9 +1,9 @@
 'use client'
 import React from "react";
 
-export default function SectionSubtitle({titleName, gradientFrom, gradientTo}) {
+export default function SectionSubtitle({titleName}) {
     return(
-        <div className={`w-full py-[3rem] bg-gradient-to-b from-[${gradientFrom}] to-[${gradientTo}]`}>
+        <div className="w-[80vw] py-[3rem]">
             <h2 className="text-white text-[5rem] font-semibold uppercase tracking-tighter text">{titleName}</h2>
         </div>
     )
