@@ -20,7 +20,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${kenia.variable}`}>
+    <html lang="en" className={`${kenia.variable} scroll-smooth`}>
       <body className={jost.className}>{children}</body>
     </html>
   );

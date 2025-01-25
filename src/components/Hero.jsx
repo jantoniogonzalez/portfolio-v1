@@ -5,7 +5,7 @@ import GsapMagnetic from "./GsapMagnetic";
 import { useTransform , motion } from "motion/react";
 import Link from "next/link";
 
-export default function Hero() {
+export default function Hero({id}) {
     const [isTitleHovered, setIsTitleHovered] = useState(false);
     const [isSubtitleHovered, setIsSubtitleHovered] = useState(false);
 
@@ -36,7 +36,7 @@ export default function Hero() {
     }
 
     return (
-        <div className="h-[100vh] grid grid-cols-1 items-center justify-center overflow-x-hidden">
+        <div id={id} className="h-[100vh] grid grid-cols-1 items-center justify-center overflow-x-hidden">
             <motion.div
                 className="z-20 max-w-[100vw]"
                 variants={titleContainer}
@@ -120,8 +120,9 @@ export default function Hero() {
                 >
                     <GsapMagnetic>
                         <Link
-                            href="https://github.com/jantoniogonzalez"
+                            href="#experience"
                             className="p-3 flex flex-col justify-center items-center"
+                            scroll={true}
                         >
                             <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="15.0002" cy="14.6389" r="13.4543" stroke="#F0F0F0" strokeWidth="2"/>

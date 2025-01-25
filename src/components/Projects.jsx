@@ -8,11 +8,25 @@ import {motion, useScroll, useTransform} from "motion/react"
 import { Badge } from "./ui/badge";
 import SectionSubtitle from "./subtitles/SectionSubtitle";
 
-export default function Projects() {
+export default function Projects({id}) {
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start end", "end end"]
+    });
 
+    const xSubtitle = useTransform(
+        scrollYProgress,
+        [0, 0.5],
+        [-250, 0]
+    );
     return (
-        <div className="min-h-[100vh] py-[2vw] flex flex-col justify-center items-center overflow-hidden">
-            <SectionSubtitle titleName="Recent Projecs" />
+        <div ref={ref} id={id} className="min-h-[100vh] py-[2vw] flex flex-col justify-center items-center overflow-hidden">
+            <motion.div
+                style={{x: xSubtitle}}
+            >
+                <SectionSubtitle titleName="Recent Projecs" />
+            </motion.div>
             <div className="w-[80vw] flex flex-col gap-y-[3rem]">
                 <RightSideProject
                     projectImg={FactosPic}
@@ -81,14 +95,14 @@ const RightSideProject = ({projectImg, title, roles, description, technologies, 
                 className="w-full lg:w-[50%]"
                 style={{y: yText, opacity: opacityText}}
             >
-                <h3 className="text-white text-[1.75rem] font-logo uppercase">{title}</h3>
-                <h4 className="text-slate-300 text-[1.25rem]">{roles}</h4>
-                <p className="text-slate-50 text-[1.25rem]">{description}</p>
+                <h3 className="text-white text-[2.5rem] font-logo uppercase">{title}</h3>
+                <h4 className="text-slate-300 text-[1.5rem]">{roles}</h4>
+                <p className="text-slate-50 text-[1.5rem] pb-[1rem]">{description}</p>
                 <div className="flex gap-2 flex-wrap">
                     {
                         technologies && technologies.map((technology, id) => {
                             return (
-                                <Badge className="text-[1rem] py-[0.5vw]" key={id}>{technology}</Badge>
+                                <Badge className="text-[1.25rem] py-[0.5vw]" key={id}>{technology}</Badge>
                             )
                         }) 
                     }
@@ -140,14 +154,14 @@ const LeftSideProject = ({projectImg, title, roles, description, technologies, g
                 className="w-full lg:w-[50%]"
                 style={{y: yText, opacity: opacityText}}
             >
-                <h3 className="text-white text-[1.75rem] font-logo uppercase">{title}</h3>
-                <h4 className="text-slate-300 text-[1.25rem]">{roles}</h4>
-                <p className="text-slate-50 text-[1.25rem]">{description}</p>
+                <h3 className="text-white text-[2.5rem] font-logo uppercase">{title}</h3>
+                <h4 className="text-slate-300 text-[1.5rem]">{roles}</h4>
+                <p className="text-slate-50 text-[1.5rem]">{description}</p>
                 <div className="flex gap-2 flex-wrap">
                     {
                         technologies && technologies.map((technology, id) => {
                             return (
-                                <Badge className="text-[1rem] py-[0.5vw]" key={id}>{technology}</Badge>
+                                <Badge className="text-[1.25rem] py-[0.5vw]" key={id}>{technology}</Badge>
                             )
                         }) 
                     }

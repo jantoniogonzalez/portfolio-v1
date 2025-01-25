@@ -17,7 +17,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import SectionSubtitle from "./subtitles/SectionSubtitle"
 
 
-export default function WorkAbout() {
+export default function WorkAbout({id}) {
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({
         target: ref,
@@ -27,9 +27,19 @@ export default function WorkAbout() {
         return (1-scrollYProgress)*90
     }
 
+    const xSubtitle = useTransform(
+        scrollYProgress,
+        [0, 0.75],
+        [-450, 0]
+    );
+
     return (
-        <div ref={ref} className="min-h-[100vh] py-[2rem] flex flex-col justify-center items-center">
-            <SectionSubtitle titleName="Experience" />
+        <div id={id} ref={ref} className="min-h-[100vh] py-[2rem] flex flex-col justify-center items-center">
+            <motion.div
+                style={{x: xSubtitle}}
+            >
+                <SectionSubtitle titleName="Experience" />
+            </motion.div>
             <motion.div
                 style={{scaleX: scrollYProgress, scaleY: scrollYProgress }}
                 className="snap-center"
@@ -37,11 +47,11 @@ export default function WorkAbout() {
             >
                 <Tabs
                     defaultValue="work"
-                    className="w-[50vw]"
+                    className="w-[80vw]"
                 >
-                    <TabsList className="grid grid-cols-2 w-[50vw] h-fit bg-transparent text-wrap">
-                        <TabsTrigger className="text-[1.75rem] w-full" value="work">Work</TabsTrigger>
-                        <TabsTrigger className="text-[1.75rem] w-full" value="education">Education</TabsTrigger>
+                    <TabsList className="grid grid-cols-2 h-fit bg-transparent text-wrap">
+                        <TabsTrigger className="text-[2rem] w-full" value="work">Work</TabsTrigger>
+                        <TabsTrigger className="text-[2rem] w-full" value="education">Education</TabsTrigger>
                     </TabsList>
                     <TabsContent value="work">
                         <Card className="bg-transparent ">
@@ -87,17 +97,17 @@ export default function WorkAbout() {
 const CardCustomItem = ({dates, companyLogo, companyName, jobTitle, sectionSubtitle, achievements, chips}) => {
     return (
         <CardContent className="p-5 w-inherit">
-            <CardDescription className="text-slate-300 text-[1.25rem] font-light">{dates}</CardDescription>
+            <CardDescription className="text-slate-300 text-[1.5rem] font-light">{dates}</CardDescription>
             <div className="flex gap-3 items-center h-fit py-3">
                 <span className=" h-[5vw] aspect-[2/2] rounded-md">
                     <Image className="rounded-md" style={{objectFit: "fill"}} src={companyLogo} alt="Switchboard Logo" />
                 </span>
-                <CardTitle className="text-[1.75rem] font-medium uppercase text-white">{companyName}</CardTitle>
+                <CardTitle className="text-[2.5rem] font-medium uppercase text-white">{companyName}</CardTitle>
             </div>
-            <CardDescription className="text-slate-300 text-[1.25rem] font-light">{jobTitle}</CardDescription>
-            <CardTitle className="text-[1.5rem] font-normal text-white">{sectionSubtitle}</CardTitle>
+            <CardDescription className="text-slate-300 text-[1.5rem] font-light">{jobTitle}</CardDescription>
+            <CardTitle className="text-[1.75rem] font-normal text-white">{sectionSubtitle}</CardTitle>
             <CardDescription>
-                <ul className="list-inside list-disc text-slate-200 text-[1.25rem] pl-[1vw]">
+                <ul className="list-inside list-disc text-slate-200 text-[1.5rem] pl-[1vw]">
                 {
                     achievements.map((achievement, id) => {
                         return (
@@ -110,7 +120,7 @@ const CardCustomItem = ({dates, companyLogo, companyName, jobTitle, sectionSubti
                     {
                         chips && chips.map((chip, id) => {
                             return (
-                                <Badge className="text-[1rem] py-[0.5vw]" key={id}>{chip}</Badge>
+                                <Badge className="text-[1.25rem] py-[0.5vw]" key={id}>{chip}</Badge>
                             )
                         }) 
                     }

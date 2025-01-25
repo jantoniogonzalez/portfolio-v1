@@ -10,10 +10,10 @@ export default function Home() {
   return (
     <main className="bg-[#222222]">
       <Header />
-      <Hero/>
-      <WorkAbout/>
-      <Projects/>
-      <About/>
+      <Hero id="hero"/>
+      <WorkAbout id="experience"/>
+      <Projects id="projects"/>
+      <About id="about"/>
     </main>
   );
 }
