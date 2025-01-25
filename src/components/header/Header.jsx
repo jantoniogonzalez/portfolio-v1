@@ -73,7 +73,7 @@ const MenuButton = ({isActive, setIsActive}) => {
         open: {
             width: 480,
             height: 650,
-            opacity: 0.9,
+            opacity: 1,
         },
         closed: {
             opacity: 0,
@@ -88,12 +88,20 @@ const MenuButton = ({isActive, setIsActive}) => {
             onClick={() => setIsActive(!isActive)}
         >
             <motion.div
-                className="bg-white rounded-3xl"
+                className="bg-white rounded-3xl flex flex-col justify-between"
                 variants={variants}
                 animate={isActive ? "open": "closed"}
                 initial="closed"
             >
+                <div className="flex flex-col">
+                    <Link href="#hero">Home</Link>
+                    <Link href="#experience">Experience</Link>
+                    <Link href="#projects">Projects</Link>
+                    <Link href="#about">About Me</Link>
+                </div>
+                <div>
 
+                </div>
             </motion.div>
             <motion.div
                 className="z-10 absolute top-0 right-0"
@@ -111,7 +119,7 @@ const MenuButton = ({isActive, setIsActive}) => {
                 transition={{ delay: 0.2, duration: 0.5, ease: [0.76, 0, 0.24, 1]}}
             >
                 <GsapMagnetic>
-                    <p className="z-1 p-2 text-[#222222] text-[1.25rem]">Close</p>
+                    <p className="z-1 p-2 top-0 left-0 text-white text-[1.25rem]">Close</p>
                 </GsapMagnetic>
             </motion.div>
         </motion.div>

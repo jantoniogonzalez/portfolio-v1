@@ -25,7 +25,7 @@ export default function Projects({id}) {
             <motion.div
                 style={{x: xSubtitle}}
             >
-                <SectionSubtitle titleName="Recent Projecs" />
+                <SectionSubtitle titleName="Recent Projects" />
             </motion.div>
             <div className="w-[80vw] flex flex-col gap-y-[3rem]">
                 <RightSideProject
