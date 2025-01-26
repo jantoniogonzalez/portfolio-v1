@@ -34,7 +34,7 @@ export default function Header() {
             variants={headerContainer}
             initial="hidden"
             animate="show"
-            className="fixed top-5 left-0 z-[2] px-[3vw] w-full flex justify-between align-center"    
+            className="fixed top-5 z-[2] px-[3vw] w-full flex align-center"    
         >
             <GsapMagnetic>
                 <Link
@@ -55,17 +55,12 @@ export default function Header() {
             </GsapMagnetic>
             <motion.div
                 variants={headerItem}
-                className="flex items-center"
+                className="fixed right-3"
             >
                     <MenuButton isActive={isActive} setIsActive={setIsActive} />
-                
             </motion.div>
         </motion.header>
     )
-}
-
-const Menu = () => {
-
 }
 
 const MenuButton = ({isActive, setIsActive}) => {
@@ -87,7 +82,7 @@ const MenuButton = ({isActive, setIsActive}) => {
             className="overflow-hidden relative rounded-3xl"
             onClick={() => setIsActive(!isActive)}
         >
-            <motion.div
+            {/* <motion.div
                 className="bg-white rounded-3xl flex flex-col justify-between"
                 variants={variants}
                 animate={isActive ? "open": "closed"}
@@ -102,15 +97,13 @@ const MenuButton = ({isActive, setIsActive}) => {
                 <div>
 
                 </div>
-            </motion.div>
+            </motion.div> */}
             <motion.div
-                className="z-10 absolute top-0 right-0"
+                className="z-10 absolute top-0 right-0 overflow-hidden"
                 animate={{top: isActive ? "-100%" : "0"}}
                 transition={{duration: 0.5, ease: [0.76, 0, 0.24, 1]}}
             >
-                <GsapMagnetic>
-                    <p className="p-2 text-white text-[1.25rem]">Menu</p>
-                </GsapMagnetic>
+                <p className="relative w-full h-full p-2 text-white text-[1.25rem]">Menu</p>
             </motion.div>
             <motion.div
                 className="top-0 right-0"
@@ -118,9 +111,7 @@ const MenuButton = ({isActive, setIsActive}) => {
                 animate={{opacity: isActive ? "1" : "0"}}
                 transition={{ delay: 0.2, duration: 0.5, ease: [0.76, 0, 0.24, 1]}}
             >
-                <GsapMagnetic>
-                    <p className="z-1 p-2 top-0 left-0 text-white text-[1.25rem]">Close</p>
-                </GsapMagnetic>
+                <p className="absolute top-full w-full h-full p-2 text-white text-[1.25rem]">Close</p>
             </motion.div>
         </motion.div>
     )
