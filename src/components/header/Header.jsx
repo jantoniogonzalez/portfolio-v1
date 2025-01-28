@@ -34,11 +34,12 @@ export default function Header() {
             variants={headerContainer}
             initial="hidden"
             animate="show"
-            className="fixed top-5 z-[2] px-[3vw] w-full flex align-center"    
+            className="fixed top-5 px-[3vw] w-full flex align-center"    
         >
             <GsapMagnetic>
                 <Link
                     href="#hero"
+                    as=""
                     scroll={true}
                 >
                     <motion.svg variants={headerItem} className="w-[2rem] h-[3rem]" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,62 +58,112 @@ export default function Header() {
                 variants={headerItem}
                 className="fixed right-3"
             >
-                    <MenuButton isActive={isActive} setIsActive={setIsActive} />
+                <Menu isActive={isActive} setIsActive={setIsActive} />
+                <MenuButton isActive={isActive} setIsActive={setIsActive} />
             </motion.div>
         </motion.header>
     )
 }
-
-const MenuButton = ({isActive, setIsActive}) => {
+const Menu = ({isActive}) => {
     const variants= {
         open: {
-            width: 480,
-            height: 650,
+            width: "100vw",
+            height: "100vh",
             opacity: 1,
+            top: "-5px",
+            right: "-5px",
+            transition: { duration: 0.75, type: "tween", ease: [0.76, 0, 0.24, 1]},
+            zIndex: 15
         },
         closed: {
             opacity: 0,
-            width: 0,
-            height: 0,
+            width: "100px",
+            height: "40px",
+            zIndex: 0,
+            transition: { duration: 0.75, delay: 0.35, type: "tween", ease: [0.76, 0, 0.24, 1]}
         }
-    }
+    };
+
+    return (
+        <motion.div
+            className="bg-white w-[100vw] h-[100vh] rounded-lg absolute"
+            style={{
+                pointerEvents: "all",
+            }}
+            variants={variants}
+            animate={isActive ? "open" : "closed"}
+            initial="closed"
+        >
+            <div className="flex flex-col justify-evenly h-full">
+                <Link className="uppercase text-[2rem] font-logo font-semibold" href="#hero">Home</Link>
+                <Link href="#experience">Experience</Link>
+                <Link href="#projects">Projects</Link>
+                <Link href="#about">About Me</Link>
+            </div>
+        </motion.div>
+    )
+}
+
+const MenuButton = ({isActive, setIsActive}) => {
 
     return(
-        <motion.div
-            className="overflow-hidden relative rounded-3xl"
-            onClick={() => setIsActive(!isActive)}
-        >
-            {/* <motion.div
-                className="bg-white rounded-3xl flex flex-col justify-between"
-                variants={variants}
-                animate={isActive ? "open": "closed"}
-                initial="closed"
-            >
-                <div className="flex flex-col">
-                    <Link href="#hero">Home</Link>
-                    <Link href="#experience">Experience</Link>
-                    <Link href="#projects">Projects</Link>
-                    <Link href="#about">About Me</Link>
-                </div>
-                <div>
+        // <motion.div
+        //     className="overflow-hidden relative rounded-3xl"
+        //     onClick={() => setIsActive(!isActive)}
+        // >
+        //     {/* <motion.div
+        //         className="bg-white rounded-3xl flex flex-col justify-between"
+        //         variants={variants}
+        //         animate={isActive ? "open": "closed"}
+        //         initial="closed"
+        //     >
+        //         <div className="flex flex-col">
+        //             <Link href="#hero">Home</Link>
+        //             <Link href="#experience">Experience</Link>
+        //             <Link href="#projects">Projects</Link>
+        //             <Link href="#about">About Me</Link>
+        //         </div>
+        //         <div>
 
+        //         </div>
+        //     </motion.div> */}
+        //     <motion.div
+        //         className="z-10 absolute top-0 right-0 overflow-hidden"
+        //         animate={{top: isActive ? "-100%" : "0"}}
+        //         transition={{duration: 0.5, ease: [0.76, 0, 0.24, 1]}}
+        //     >
+        //         <p className="relative w-full h-full p-2 text-white text-[1.25rem]">Menu</p>
+        //     </motion.div>
+        //     <motion.div
+        //         className="top-0 right-0"
+        //         initial={{opacity: 0}}
+        //         animate={{opacity: isActive ? "1" : "0"}}
+        //         transition={{ delay: 0.2, duration: 0.5, ease: [0.76, 0, 0.24, 1]}}
+        //     >
+        //         <p className="absolute top-full w-full h-full p-2 text-white text-[1.25rem]">Close</p>
+        //     </motion.div>
+        // </motion.div>
+        <div className="absolute top-2 right-2 cursor-pointer w-[80px] h-[40px] overflow-hidden">
+            <motion.div
+                className="w-full h-full relative"
+                animate={{top: isActive ? "-100%" : "0%"}}
+                transition={{duration: 0.5, type: "tween", ease: [0.76, 0, 0.24, 1]}}
+            >
+                <GsapMagnetic>
+                <div
+                    className="w-full h-full rounded-lg  flex items-center justify-center"
+                    onClick={() => setIsActive(true)}
+                >
+                    <p className="text-white font-logo text-[1.5rem] uppercase m-0">Menu</p>
                 </div>
-            </motion.div> */}
-            <motion.div
-                className="z-10 absolute top-0 right-0 overflow-hidden"
-                animate={{top: isActive ? "-100%" : "0"}}
-                transition={{duration: 0.5, ease: [0.76, 0, 0.24, 1]}}
-            >
-                <p className="relative w-full h-full p-2 text-white text-[1.25rem]">Menu</p>
+                </GsapMagnetic>
+                <div
+                    className="w-full h-full bg-[#222222] rounded-lg z-[20] flex items-center justify-center relative"
+                    onClick={() => setIsActive(false)}
+                >
+                    <p className="text-white font-logo text-[1.5rem] uppercase m-0">Close</p>
+                </div>
             </motion.div>
-            <motion.div
-                className="top-0 right-0"
-                initial={{opacity: 0}}
-                animate={{opacity: isActive ? "1" : "0"}}
-                transition={{ delay: 0.2, duration: 0.5, ease: [0.76, 0, 0.24, 1]}}
-            >
-                <p className="absolute top-full w-full h-full p-2 text-white text-[1.25rem]">Close</p>
-            </motion.div>
-        </motion.div>
+        </div>
     )
 }

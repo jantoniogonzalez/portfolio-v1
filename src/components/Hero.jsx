@@ -38,7 +38,7 @@ export default function Hero({id}) {
     return (
         <div id={id} className="h-[100vh] grid grid-cols-1 items-center justify-center overflow-x-hidden">
             <motion.div
-                className="z-20 max-w-[100vw]"
+                className="z-[1] max-w-[100vw]"
                 variants={titleContainer}
                 initial="hidden"
                 animate="show"
@@ -75,7 +75,7 @@ export default function Hero({id}) {
                 </div>
                     
                 <motion.div
-                    className="flex pt-[2rem] mb-[1rem] justify-center w-full"
+                    className="flex pt-[2rem] mb-[1rem] justify-center w-full relative z-[0]"
                     variants={titleItem}
                 >
                     <GsapMagnetic>
