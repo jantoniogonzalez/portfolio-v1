@@ -21,13 +21,14 @@ export default function Projects({id}) {
         [-250, 0]
     );
     return (
-        <div ref={ref} id={id} className="min-h-[100vh] py-[2vw] flex flex-col justify-center items-center overflow-hidden">
+        <div ref={ref} id={id} className="min-h-[100vh] py-[2vw] flex flex-col justify-center items-center overflow-hidden relative z-0">
             <motion.div
                 style={{x: xSubtitle}}
+                className="relative z-0"
             >
                 <SectionSubtitle titleName="Recent Projects" />
             </motion.div>
-            <div className="w-[80vw] flex flex-col gap-y-[3rem]">
+            <div className="w-[80vw] flex flex-col gap-y-[3rem] relative z-0 snap-center">
                 <RightSideProject
                     projectImg={FactosPic}
                     title="Factos"
@@ -86,7 +87,7 @@ const RightSideProject = ({projectImg, title, roles, description, technologies, 
     return (
         <motion.div ref={ref} className={`flex flex-col w-full items-center gap-y-[1rem] lg:gap-x-[2rem] lg:flex-row-reverse`} >
             <motion.span
-                className={`relative w-full lg:w-[50%] aspect-[3/2] rounded-xl overflow-hidden`}
+                className={`relative z-0 w-full lg:w-[50%] aspect-[3/2] rounded-xl overflow-hidden`}
                 style={{x: xImage, rotate: rotateImage}}
             >
                 <Image style={{objectFit: "cover"}} src={projectImg} alt="image" fill/>

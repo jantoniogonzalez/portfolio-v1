@@ -72,3 +72,19 @@
     @apply bg-background text-foreground;
   }
 }
+
+html {
+  font-size: 90%; /* 1rem = 10px */
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 70%; /* 1rem = 8px on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 70%; /* 1rem = 6.4px on phone screens */
+  }
+}

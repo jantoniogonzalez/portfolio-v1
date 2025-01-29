@@ -99,7 +99,7 @@ const CardCustomItem = ({dates, companyLogo, companyName, jobTitle, sectionSubti
         <CardContent className="p-5 w-inherit">
             <CardDescription className="text-slate-300 text-[1.5rem] font-light">{dates}</CardDescription>
             <div className="flex gap-3 items-center h-fit py-3">
-                <span className=" h-[5vw] aspect-[2/2] rounded-md">
+                <span className=" h-[4rem] aspect-[2/2] rounded-md">
                     <Image className="rounded-md" style={{objectFit: "fill"}} src={companyLogo} alt="Switchboard Logo" />
                 </span>
                 <CardTitle className="text-[2.5rem] font-medium uppercase text-white">{companyName}</CardTitle>
