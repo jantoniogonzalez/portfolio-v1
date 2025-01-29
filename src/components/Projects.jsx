@@ -8,6 +8,7 @@ import {motion, useScroll, useTransform} from "motion/react"
 import { Badge } from "./ui/badge";
 import SectionSubtitle from "./subtitles/SectionSubtitle";
 import GsapMagnetic from "./GsapMagnetic";
+import MagneticBagde from "./ui/magneticBadge";
 
 export default function Projects({id}) {
     const ref = useRef(null);
@@ -22,14 +23,14 @@ export default function Projects({id}) {
         [-250, 0]
     );
     return (
-        <div ref={ref} id={id} className="min-h-[100vh] py-[2vw] flex flex-col justify-center items-center overflow-hidden relative z-0">
+        <div ref={ref} id={id} className="min-h-[100vh] py-[2vw] flex flex-col justify-center items-center overflow-hidden relative ">
             <motion.div
                 style={{x: xSubtitle}}
-                className="relative z-0"
+                className="relative "
             >
                 <SectionSubtitle titleName="Recent Projects" />
             </motion.div>
-            <div className="w-[80vw] flex flex-col gap-y-[3rem] relative z-0 snap-center">
+            <div className="w-[80vw] flex flex-col gap-y-[3rem] relative  snap-center">
                 <RightSideProject
                     projectImg={FactosPic}
                     title="Factos"
@@ -92,7 +93,7 @@ const RightSideProject = ({projectImg, title, roles, description, technologies, 
     return (
         <motion.div ref={ref} className={`flex flex-col w-full items-center gap-y-[1rem] lg:gap-x-[2rem] lg:flex-row-reverse`} >
             <motion.span
-                className={`relative z-0 w-full lg:w-[50%] aspect-[3/2] rounded-xl overflow-hidden`}
+                className={`relative  w-full lg:w-[50%] aspect-[3/2] rounded-xl overflow-hidden`}
                 style={{x: xImage, rotate: rotateImage}}
             >
                 <Image style={{objectFit: "cover"}} src={projectImg} alt="image" fill/>
@@ -101,42 +102,7 @@ const RightSideProject = ({projectImg, title, roles, description, technologies, 
                 className="w-full lg:w-[50%]"
                 style={{y: yText, opacity: opacityText}}
             >
-                <h3 className="text-white text-[2.5rem] font-logo uppercase">{title}</h3>
-                <h4 className="text-slate-300 text-[1.5rem]">{roles}</h4>
-                <p className="text-slate-50 text-[1.5rem] pb-[1rem]">{description}</p>
-                <div className="flex items-center justify-between">
-                    <div className="flex gap-2 flex-wrap">
-                        {
-                            technologies && technologies.map((technology, id) => {
-                                return (
-                                    <GsapMagnetic key={id}>
-                                        <Badge className="text-[1.25rem] py-[0.5vw]">{technology}</Badge>
-                                    </GsapMagnetic>
-                                )
-                            }) 
-                        }
-                    </div>
-                    <div className="flex gap-2 flex-wrap">
-                        {
-                            githubLink && (
-                                <GsapMagnetic>
-                                <div className="uppercase text-white border-solid border-2 border-white rounded-xl px-[1rem] py-[0.5rem] text-[1.25rem] hover:border-[#f5c63f] hover:text-[#f5c63f]">
-                                    <a target="_blank" rel="noopener noreferrer"href={githubLink}>Github</a>
-                                </div>
-                                </GsapMagnetic>
-                            )
-                        }
-                        {
-                            demoLink && (
-                                <GsapMagnetic>
-                                <div className="uppercase text-white border-solid border-2 border-white rounded-xl px-[1rem] py-[0.5rem] text-[1.25rem] hover:border-[#356fdb] hover:text-[#356fdb]">
-                                    <a  target="_blank" rel="noopener noreferrer"href={demoLink}>Demo</a>
-                                </div>
-                                </GsapMagnetic>
-                            )
-                        }   
-                    </div>   
-                </div>
+                <ProjectText title={title} roles={roles} description={description} technologies={technologies} githubLink={githubLink} demoLink={demoLink} />
             </motion.div>
         </motion.div>
     )
@@ -184,43 +150,49 @@ const LeftSideProject = ({projectImg, title, roles, description, technologies, g
                 className="w-full lg:w-[50%]"
                 style={{y: yText, opacity: opacityText}}
             >
-                <h3 className="text-white text-[2.5rem] font-logo uppercase">{title}</h3>
-                <h4 className="text-slate-300 text-[1.5rem]">{roles}</h4>
-                <p className="text-slate-50 text-[1.5rem]">{description}</p>
-                <div className="flex items-center justify-between">
-                    <div className="flex gap-2 flex-wrap">
-                        {
-                            technologies && technologies.map((technology, id) => {
-                                return (
-                                    <GsapMagnetic key={id}>
-                                        <Badge className="text-[1.25rem] py-[0.5vw]">{technology}</Badge>
-                                    </GsapMagnetic>
-                                )
-                            }) 
-                        }
-                    </div>
-                    <div className="flex gap-2 flex-wrap">
-                        {
-                            githubLink && (
-                                <GsapMagnetic>
-                                <div className="uppercase text-white border-solid border-2 border-white rounded-xl px-[1rem] py-[0.5rem] text-[1.25rem] hover:border-[#f5c63f] hover:text-[#f5c63f]">
-                                    <a target="_blank" rel="noopener noreferrer"href={githubLink}>Github</a>
-                                </div>
-                                </GsapMagnetic>
-                            )
-                        }
-                        {
-                            demoLink && (
-                                <GsapMagnetic>
-                                <div className="uppercase text-white border-solid border-2 border-white rounded-xl px-[1rem] py-[0.5rem] text-[1.25rem] hover:border-[#356fdb] hover:text-[#356fdb]">
-                                    <a  target="_blank" rel="noopener noreferrer"href={demoLink}>Demo</a>
-                                </div>
-                                </GsapMagnetic>
-                            )
-                        }   
-                    </div>
-                </div>
+                <ProjectText title={title} roles={roles} description={description} technologies={technologies} githubLink={githubLink} demoLink={demoLink} />
             </motion.div>
         </motion.div>
+    )
+}
+
+const ProjectText = ({title, roles, description, technologies, githubLink, demoLink}) => {
+    return (
+        <div>
+            <h3 className="text-white text-[2.5rem] font-logo uppercase">{title}</h3>
+            <h4 className="text-slate-300 text-[1.5rem]">{roles}</h4>
+            <p className="text-slate-50 text-[1.5rem]">{description}</p>
+            <div className="flex items-center justify-between">
+                <div className="flex gap-2 flex-wrap">
+                    {
+                        technologies && technologies.map((technology, id) => {
+                            return (
+                                <MagneticBagde className="text-[1.25rem] py-[0.5vw]" num={id} content={technology} key={id} />
+                            )
+                        }) 
+                    }
+                </div>
+                <div className="flex gap-2 flex-wrap">
+                    {
+                        githubLink && (
+                            <GsapMagnetic>
+                            <div className="uppercase text-white border-solid border-2 border-white rounded-3xl px-[1rem] py-[0.5rem] text-[1.25rem] hover:border-[#f5c63f] hover:text-[#f5c63f]">
+                                <a target="_blank" rel="noopener noreferrer"href={githubLink}>Github</a>
+                            </div>
+                            </GsapMagnetic>
+                        )
+                    }
+                    {
+                        demoLink && (
+                            <GsapMagnetic>
+                            <div className="uppercase text-white border-solid border-2 border-white rounded-3xl px-[1rem] py-[0.5rem] text-[1.25rem] hover:border-[#356fdb] hover:text-[#356fdb]">
+                                <a  target="_blank" rel="noopener noreferrer"href={demoLink}>Demo</a>
+                            </div>
+                            </GsapMagnetic>
+                        )
+                    }   
+                </div>
+            </div>
+        </div>
     )
 }

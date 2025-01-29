@@ -15,6 +15,7 @@ import SFUIcon from "../../public/images/SFU-block-logo.png"
 import Image from "next/image"  
 import { motion, useScroll, useTransform } from "motion/react";
 import SectionSubtitle from "./subtitles/SectionSubtitle"
+import MagneticBagde from "./ui/magneticBadge"
 
 
 export default function WorkAbout({id}) {
@@ -120,7 +121,7 @@ const CardCustomItem = ({dates, companyLogo, companyName, jobTitle, sectionSubti
                     {
                         chips && chips.map((chip, id) => {
                             return (
-                                <Badge className="text-[1.25rem] py-[0.5vw]" key={id}>{chip}</Badge>
+                                <MagneticBagde className="text-[1.25rem] py-[0.5vw]" key={id} num={id} content={chip} />
                             )
                         }) 
                     }
