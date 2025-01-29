@@ -81,6 +81,7 @@ const Menu = ({isActive, setIsActive}) => {
             opacity: 0,
             width: "100px",
             height: "40px",
+            top: "-5px",
             zIndex: 0,
             transition: { duration: 0.75, delay: 0.35, type: "tween", ease: [0.76, 0, 0.24, 1]},
             pointerEvents: "none"
@@ -110,7 +111,7 @@ const MenuButton = ({isActive, setIsActive}) => {
             <motion.div
                 className="w-full h-full relative"
                 animate={{top: isActive ? "-100%" : "0%"}}
-                transition={{duration: 0.5, type: "tween", ease: [0.76, 0, 0.24, 1]}}
+                transition={{duration: 0.5, delay: 0.5 , type: "tween", ease: [0.76, 0, 0.24, 1]}}
             >
                 <GsapMagnetic>
                 <div
