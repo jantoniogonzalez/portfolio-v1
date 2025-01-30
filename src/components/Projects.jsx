@@ -194,7 +194,7 @@ const ProjectText = ({title, roles, description, technologies, githubLink, demoL
                         }) 
                     }
                 </div>
-                <div className="flex gap-2 flex-wrap">
+                <div className="flex gap-2 flex-wrap justify-end">
                     {
                         githubLink && (
                             <GsapMagnetic>
