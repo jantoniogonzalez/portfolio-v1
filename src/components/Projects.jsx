@@ -22,6 +22,12 @@ export default function Projects({id, setIsTitleHovered, setIsSubtitleHovered}) 
         [0, 0.5],
         [-250, 0]
     );
+
+    const xScaleProgressBar = useTransform(
+        scrollYProgress,
+        [0, 0.5],
+        [0, 1]
+    );
     return (
         <div ref={ref} id={id} className="min-h-[100vh] py-[2vw] flex flex-col justify-center items-center overflow-hidden relative ">
             <motion.div
@@ -29,6 +35,22 @@ export default function Projects({id, setIsTitleHovered, setIsSubtitleHovered}) 
                 className="relative z-[1]"
             >
                 <SectionSubtitle titleName="Recent Projects" setIsTitleHovered={setIsTitleHovered} />
+                <motion.div
+                    id="scroll-indicator"
+                    style={{
+                        scaleX: xScaleProgressBar,
+                        position: "relative",
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        height: 10,
+                        originX: "150%",
+                        backgroundColor: "#356fdb",
+                        borderRadius: "10px",
+                        marginBottom: "3rem",
+                        overflow: "hidden",
+                    }}
+                />
             </motion.div>
             <div className="w-[80vw] flex flex-col gap-y-[3rem] relative  snap-center">
                 <RightSideProject

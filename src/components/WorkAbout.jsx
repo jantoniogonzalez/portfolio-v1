@@ -24,9 +24,6 @@ export default function WorkAbout({id, setIsTitleHovered, setIsSubtitleHovered})
         target: ref,
         offset: ["start end", "end end"]
     });
-    const rotateX = (scrollYProgress) => {
-        return (1-scrollYProgress)*90
-    }
 
     const xSubtitle = useTransform(
         scrollYProgress,
@@ -44,7 +41,7 @@ export default function WorkAbout({id, setIsTitleHovered, setIsSubtitleHovered})
         },
         "closed" : {
             width: "25%",
-            backgroundColor: "#222222",
+            backgroundColor: "transparent",
             color : "#ffffff",
             fontSize: "1rem",
             transition: { duration: 0.75, type: "tween", ease: [0.76, 0, 0.24, 1]},
@@ -76,7 +73,26 @@ export default function WorkAbout({id, setIsTitleHovered, setIsSubtitleHovered})
             opacity: 0,
             transition: { duration: 0.75, type: "tween", ease: [0.76, 0, 0.24, 1]},
         }
-    }
+    };
+
+    const xScaleProgressBar = useTransform(
+        scrollYProgress,
+        [0, 0.75],
+        [0, 1]
+    );
+
+    const scaleXTabs = useTransform(
+        scrollYProgress,
+        [0, 0.85],
+        [0, 1]
+    );
+
+    const scaleYTabs = useTransform(
+        scrollYProgress,
+        [0, 0.85],
+        [0, 1]
+    );
+
 
     return (
         <div id={id} ref={ref} className="min-h-[100vh] py-[2rem] flex flex-col items-center">
@@ -85,13 +101,33 @@ export default function WorkAbout({id, setIsTitleHovered, setIsSubtitleHovered})
                 className="z-[1]"
             >
                 <SectionSubtitle titleName="Experience" setIsTitleHovered={setIsTitleHovered} />
+                    <motion.div
+                        id="scroll-indicator"
+                        style={{
+                            scaleX: xScaleProgressBar,
+                            position: "relative",
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            height: 10,
+                            originX: "-50%",
+                            backgroundColor: "#f5c63f",
+                            borderRadius: "10px",
+                            marginBottom: "3rem"
+                        }}
+                    />
             </motion.div>
+            
             <motion.div
-                style={{scaleX: scrollYProgress, scaleY: scrollYProgress }}
+                style={{scaleX: scaleXTabs, scaleY: scaleYTabs }}
                 className="w-[80vw]"
                 // The rotateX can be transformed like , rotateX: (1-scrollYProgress)*90 window
             >
-                <div className="w-full flex items-center cursor-pointer font-medium uppercase">
+                <div
+                    className="w-full relative flex items-center cursor-pointer font-medium uppercase z-[2]"
+                    onMouseEnter={() => {setIsSubtitleHovered(true)}}
+                    onMouseLeave={() => {setIsSubtitleHovered(false)}}
+                >
                     <motion.div
                         variants={tabsVariants}
                         initial="open"

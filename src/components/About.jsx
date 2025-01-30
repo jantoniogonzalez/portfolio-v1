@@ -11,11 +11,16 @@ export default function About({id, setIsTitleHovered, setIsSubtitleHovered}) {
     const { scrollYProgress } = useScroll({
         target: ref,
         offset: ['start end', 'end end']
-    })
+    });
     const xSubtitle = useTransform(
         scrollYProgress,
         [0, 0.75],
         [-200, 0]
+    );
+    const xScaleProgressBar = useTransform(
+        scrollYProgress,
+        [0, 0.75],
+        [0, 1]
     )
     return (
         <div id={id} ref={ref} className="min-h-[100vh] flex flex-col items-center overflow-hidden">
@@ -24,13 +29,31 @@ export default function About({id, setIsTitleHovered, setIsSubtitleHovered}) {
                 className="z-[1]"
             >
                 <SectionSubtitle titleName="More About Me" setIsTitleHovered={setIsTitleHovered} />
+                <motion.div
+                    style={{
+                        scaleX: xScaleProgressBar,
+                        position: "relative",
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        height: 10,
+                        originX: "50%",
+                        backgroundColor: "#c32d27",
+                        borderRadius: "10px",
+                        marginBottom: "3rem",
+                        overflow: "hidden",
+                    }}
+                />
+                
             </motion.div>
             <TransitionText /> 
             <GsapMagnetic>
                 <Link
                     href="#hero"
-                    className="py-10 flex flex-col justify-center items-center"
+                    className="py-10 flex flex-col justify-center items-center z-[1]"
                     scroll={true}
+                    onMouseEnter={() => {setIsSubtitleHovered(true)}}
+                    onMouseLeave={() => {setIsSubtitleHovered(false)}}
                 >
                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="15.0002" cy="14.6389" r="13.4543" transform="rotate(180 15.0002 14.6389)" stroke="#F0F0F0" strokeWidth="2"/>
