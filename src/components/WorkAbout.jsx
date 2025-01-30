@@ -1,6 +1,5 @@
 'use client'
-import React, { useRef } from "react"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import React, { useRef, useState } from "react"
 import {
     Card,
     CardContent,
@@ -19,6 +18,7 @@ import MagneticBagde from "./ui/magneticBadge"
 
 
 export default function WorkAbout({id}) {
+    const [isWork, setIsWork] = useState(true);
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({
         target: ref,
@@ -34,8 +34,52 @@ export default function WorkAbout({id}) {
         [-450, 0]
     );
 
+    const tabsVariants = {
+        "open" : {
+            width: "75%",
+            backgroundColor: "#ffffff",
+            color : "#222222",
+            fontSize: "2rem",
+            transition: { duration: 0.75, type: "tween", ease: [0.76, 0, 0.24, 1]},
+        },
+        "closed" : {
+            width: "25%",
+            backgroundColor: "#222222",
+            color : "#ffffff",
+            fontSize: "1rem",
+            transition: { duration: 0.75, type: "tween", ease: [0.76, 0, 0.24, 1]},
+        }
+    }
+
+    const cardsVariants = {
+        "open" : {
+            x: 0,
+            y: 0,
+            scaleX: 1,
+            scaleY: 1,
+            opacity: 1,
+            transition: { duration: 0.75, type: "tween", ease: [0.76, 0, 0.24, 1]},
+        },
+        "closedLeft" : {
+            x: "-50%",
+            y: "-50%",
+            scaleX: 0,
+            scaleY: 0,
+            opacity: 0,
+            transition: { duration: 0.75, type: "tween", ease: [0.76, 0, 0.24, 1]},
+        },
+        "closedRight" : {
+            x: "50%",
+            y: "-50%",
+            scaleX: 0,
+            scaleY: 0,
+            opacity: 0,
+            transition: { duration: 0.75, type: "tween", ease: [0.76, 0, 0.24, 1]},
+        }
+    }
+
     return (
-        <div id={id} ref={ref} className="min-h-[100vh] py-[2rem] flex flex-col justify-center items-center">
+        <div id={id} ref={ref} className="min-h-[100vh] py-[2rem] flex flex-col items-center">
             <motion.div
                 style={{x: xSubtitle}}
             >
@@ -43,53 +87,80 @@ export default function WorkAbout({id}) {
             </motion.div>
             <motion.div
                 style={{scaleX: scrollYProgress, scaleY: scrollYProgress }}
-                className="snap-center"
+                className="w-[80vw]"
                 // The rotateX can be transformed like , rotateX: (1-scrollYProgress)*90 window
             >
-                <Tabs
-                    defaultValue="work"
-                    className="w-[80vw]"
+                <div className="w-full flex items-center cursor-pointer font-medium uppercase">
+                    <motion.div
+                        variants={tabsVariants}
+                        initial="open"
+                        animate={ isWork ? "open" : "closed"}
+                        className="text-center rounded-tl-xl py-2"
+                        onClick={() => setIsWork(true)}
+                    >
+                        <h3>Work</h3>    
+                        
+                    </motion.div>
+                    <motion.div
+                        variants={tabsVariants}
+                        initial="closed"
+                        className="text-center bg-white rounded-tr-xl py-2"
+                        animate={ isWork ? "closed" : "open"}
+                        onClick={() => setIsWork(false)}
+                    >
+                        <h3>Education</h3>
+                    </motion.div>
+                </div>
+                <div
+                    className="relative"
                 >
-                    <TabsList className="grid grid-cols-2 h-fit bg-transparent text-wrap">
-                        <TabsTrigger className="text-[2rem] w-full" value="work">Work</TabsTrigger>
-                        <TabsTrigger className="text-[2rem] w-full" value="education">Education</TabsTrigger>
-                    </TabsList>
-                    <TabsContent value="work">
-                        <Card className="bg-transparent ">
-                            <CardCustomItem
-                                dates="May 2023 - December 2023"
-                                companyLogo={SwitchboardIcon}
-                                companyName="Switchboard"
-                                jobTitle="Web Software Developer - Co-op"
-                                sectionSubtitle="Key Achievements"
-                                achievements={[
-                                    "Redesigned and implemented the check-out page for dispatchers.",
-                                    "Designed and developed a multi-step modal to download and send trucker logs.",
-                                    "Led and planned web-team and cross-team meetings."
-                                ]}
-                                chips={["React", "NodeJS", "Figma", "SCSS", "Parse Server"]}
-                            />
-                        </Card>
-                    </TabsContent>
-                    <TabsContent value="education">
-                        <Card className="bg-transparent">
-                            <CardCustomItem
-                                dates="January 2021 - May 2025"
-                                companyLogo={SFUIcon}
-                                companyName="Simon Fraser University"
-                                jobTitle="BSc of Applied Sciences (Computer Science Major)"
-                                sectionSubtitle="Relevant Coursework"
-                                achievements={[
-                                    "Software Development Methods & Testing",
-                                    "Database Systems I & II",
-                                    "Distributed Systems",
-                                    "Operating Systems",
-                                    "Web Backend Development"
-                                ]}
-                            />
-                        </Card>
-                    </TabsContent>
-                </Tabs>
+                <motion.div
+                    className="absolute w-[80vw]"
+                    variants={cardsVariants}
+                    initial="open"
+                    animate={ isWork ? "open" : "closedLeft"}
+                >
+                    <Card className="bg-transparent rounded-tl-none">
+                        <CardCustomItem
+                            dates="May 2023 - December 2023"
+                            companyLogo={SwitchboardIcon}
+                            companyName="Switchboard"
+                            jobTitle="Web Software Developer - Co-op"
+                            sectionSubtitle="Key Achievements"
+                            achievements={[
+                                "Redesigned and implemented the check-out page for dispatchers.",
+                                "Designed and developed a multi-step modal to download and send trucker logs.",
+                                "Led and planned web-team and cross-team meetings."
+                            ]}
+                            chips={["React", "NodeJS", "Figma", "SCSS", "Parse Server"]}
+                        />
+                    </Card>
+                </motion.div>
+                <motion.div
+                    className="absolute w-[80vw]"
+                    variants={cardsVariants}
+                    initial="closedRight"
+                    animate={ isWork ? "closedRight" : "open"}
+                >
+                    <Card className="bg-transparent rounded-tr-none">
+                        <CardCustomItem
+                            dates="January 2021 - May 2025"
+                            companyLogo={SFUIcon}
+                            companyName="Simon Fraser University"
+                            jobTitle="BSc of Applied Sciences (Computer Science Major)"
+                            sectionSubtitle="Relevant Coursework"
+                            achievements={[
+                                "Software Development Methods & Testing",
+                                "Database Systems I & II",
+                                "Distributed Systems",
+                                "Operating Systems",
+                                "Web Backend Development"
+                            ]}
+                        />
+                    </Card>
+                </motion.div>
+                </div>
+                
             </motion.div>
         </div>
     )
