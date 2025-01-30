@@ -6,7 +6,7 @@ import {motion, useScroll, useTransform} from "motion/react"
 import Link from "next/link"
 import GsapMagnetic from "./GsapMagnetic"
 
-export default function About({id}) {
+export default function About({id, setIsTitleHovered, setIsSubtitleHovered}) {
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({
         target: ref,
@@ -21,8 +21,9 @@ export default function About({id}) {
         <div id={id} ref={ref} className="min-h-[100vh] flex flex-col items-center overflow-hidden">
             <motion.div
                 style={{x: xSubtitle}}
+                className="z-[1]"
             >
-                <SectionSubtitle titleName="More About Me" />
+                <SectionSubtitle titleName="More About Me" setIsTitleHovered={setIsTitleHovered} />
             </motion.div>
             <TransitionText /> 
             <GsapMagnetic>

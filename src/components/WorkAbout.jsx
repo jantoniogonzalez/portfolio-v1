@@ -17,7 +17,7 @@ import SectionSubtitle from "./subtitles/SectionSubtitle"
 import MagneticBagde from "./ui/magneticBadge"
 
 
-export default function WorkAbout({id}) {
+export default function WorkAbout({id, setIsTitleHovered, setIsSubtitleHovered}) {
     const [isWork, setIsWork] = useState(true);
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -82,8 +82,9 @@ export default function WorkAbout({id}) {
         <div id={id} ref={ref} className="min-h-[100vh] py-[2rem] flex flex-col items-center">
             <motion.div
                 style={{x: xSubtitle}}
+                className="z-[1]"
             >
-                <SectionSubtitle titleName="Experience" />
+                <SectionSubtitle titleName="Experience" setIsTitleHovered={setIsTitleHovered} />
             </motion.div>
             <motion.div
                 style={{scaleX: scrollYProgress, scaleY: scrollYProgress }}

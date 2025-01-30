@@ -10,7 +10,7 @@ import SectionSubtitle from "./subtitles/SectionSubtitle";
 import GsapMagnetic from "./GsapMagnetic";
 import MagneticBagde from "./ui/magneticBadge";
 
-export default function Projects({id}) {
+export default function Projects({id, setIsTitleHovered, setIsSubtitleHovered}) {
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({
         target: ref,
@@ -26,9 +26,9 @@ export default function Projects({id}) {
         <div ref={ref} id={id} className="min-h-[100vh] py-[2vw] flex flex-col justify-center items-center overflow-hidden relative ">
             <motion.div
                 style={{x: xSubtitle}}
-                className="relative "
+                className="relative z-[1]"
             >
-                <SectionSubtitle titleName="Recent Projects" />
+                <SectionSubtitle titleName="Recent Projects" setIsTitleHovered={setIsTitleHovered} />
             </motion.div>
             <div className="w-[80vw] flex flex-col gap-y-[3rem] relative  snap-center">
                 <RightSideProject

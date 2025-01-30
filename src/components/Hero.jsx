@@ -1,13 +1,10 @@
 'use client'
 import React, { useState } from "react";
-import BlendCursor from "./BlendCursor";
 import GsapMagnetic from "./GsapMagnetic";
 import { useTransform , motion } from "motion/react";
 import Link from "next/link";
 
-export default function Hero({id}) {
-    const [isTitleHovered, setIsTitleHovered] = useState(false);
-    const [isSubtitleHovered, setIsSubtitleHovered] = useState(false);
+export default function Hero({id, setIsTitleHovered, setIsSubtitleHovered}) {
 
     const titleTransition = {type: "spring", bounce: 0.1, duration: 2, delay: 0.5}
     const titleContainer = {
@@ -133,9 +130,7 @@ export default function Hero({id}) {
                         </Link>
                     </GsapMagnetic>
                 </motion.div>
-            </motion.div>
-            
-            <BlendCursor isTitleHovered={isTitleHovered} isSubtitleHovered={isSubtitleHovered}/>
+            </motion.div>            
         </div>
     )
 }
