@@ -81,7 +81,6 @@ const Menu = ({isActive, setIsActive}) => {
             width: "fit-content",
             height: "50px",
             opacity: 1,
-            top: "-5px",
             right: "-2.5px",
             transition: { duration: 0.75, type: "tween", ease: [0.76, 0, 0.24, 1]},
             zIndex: 15,
@@ -92,7 +91,6 @@ const Menu = ({isActive, setIsActive}) => {
             opacity: 0,
             width: "100px",
             height: "40px",
-            top: "-5px",
             zIndex: 0,
             transition: { duration: 0.75, delay: 0.35, type: "tween", ease: [0.76, 0, 0.24, 1]},
             pointerEvents: "none"
@@ -118,7 +116,7 @@ const Menu = ({isActive, setIsActive}) => {
 const MenuButton = ({isActive, setIsActive}) => {
 
     return(
-        <div className="absolute right-2 cursor-pointer w-[80px] h-[40px] overflow-hidden">
+        <div className="absolute right-2 top-2 cursor-pointer w-[80px] h-[40px] overflow-hidden">
             <motion.div
                 className="w-full h-full relative"
                 animate={{top: isActive ? "-100%" : "0%"}}
