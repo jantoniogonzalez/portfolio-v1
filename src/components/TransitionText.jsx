@@ -6,7 +6,9 @@ import Image from 'next/image';
 import AdventurerPic from '../../public/images/adventure-pic-editted.png'
 import FloatingPic from '../../public/images/floating-water.jpg'
 import DogPic from '../../public/images/lorenzo-pic.png'
-import BlendCursor from "./BlendCursor";
+import DBPic from '../../public/images/dragonboat.jpg'
+import ReaderPic from '../../public/images/reader.jpg'
+import FootballPic from '../../public/images/footballpic.jpg'
 
 export default function TransitionText() {
     
@@ -30,9 +32,12 @@ export default function TransitionText() {
     return (
         <div className="overflow-hidden">
             <div ref={container}>
-                <Slider text="Amateur Hiker & Adventurer" src={AdventurerPic} left="1%" progress={scrollYProgress} direction={200} />
-                <Slider text="Intermediate Swimmer & Water Stuff" src={FloatingPic} left="-1%" progress={scrollYProgress} direction={-250}/>
+                <Slider text="UBC Dragon Boat Paddler" src={DBPic} left="-2.5%" progress={scrollYProgress} direction={250}/>
+                <Slider text="Ex-Competitive Swimmer" src={FloatingPic} left="-1%" progress={scrollYProgress} direction={-250}/>
+                <Slider text="Reading: Concurrency in Go" src={ReaderPic} left="2%" progress={scrollYProgress} direction={200} />
+                <Slider text="Amateur Hiker & Adventurer" src={AdventurerPic} left="-1%" progress={scrollYProgress} direction={-200} />
                 <Slider text="Professional Dog Petter" src={DogPic} left="-3%" progress={scrollYProgress} direction={250}/>
+                <Slider text="Football Enjoyer" src={FootballPic} left="12%" progress={scrollYProgress} direction={-350}/>
             </div>
         </div>
     )
@@ -57,8 +62,8 @@ const Slider = ({text, src, left, progress, direction}) => {
 const Phrase = ({text, src}) => {
     return (
         <div className={"flex px-5 gap-5 items-center"}>
-            <p className="text-[2rem] text-white">{text}</p>
-            <span className="relative h-[7.5vw] aspect-[4/2] rounded-full overflow-hidden">
+            <p className="text-[1.5rem] lg:text-[2rem] text-white">{text}</p>
+            <span className="relative h-[6rem] lg:h-[8rem] aspect-[4/2] rounded-full overflow-hidden">
                 <Image style={{objectFit: "cover"}} src={src} alt="image" fill/>
             </span>
         </div>
