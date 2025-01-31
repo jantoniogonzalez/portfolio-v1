@@ -43,7 +43,7 @@ export default function Hero({id, setIsTitleHovered, setIsSubtitleHovered}) {
                 type: "tween",
                 duration: 0.4,
                 ease: [0.76, 0, 0.24, 1],
-                staggerChildren: 0.1,
+                staggerChildren: 0.05,
                 delay: 0.1
             }
         }
@@ -57,7 +57,7 @@ export default function Hero({id, setIsTitleHovered, setIsSubtitleHovered}) {
         }
     }
 
-    const laugtherContainer = {
+    const laughterContainer = {
         hidden: { opacity: 0, rotateX: 90, rotateZ: 15, y: "25%"},
         show: {
             opacity: 1,
@@ -66,15 +66,43 @@ export default function Hero({id, setIsTitleHovered, setIsSubtitleHovered}) {
                 type: "tween",
                 duration: 0.4,
                 ease: [0.76, 0, 0.24, 1],
-                delay: 2.1
+                delay: 1.2
             }
         }
     }
 
+    const roleAnnotationContainer = {
+        hidden: { opacity: 0, y: "-2rem", x: "-8rem"},
+        show: {
+            opacity: 1,
+            transition: {
+                delay: 0.15,
+                type: "tween",
+                duration: 0.2,
+                ease: [0.76, 0, 0.24, 1],
+                staggerChildren: 0.05,
+            }
+        }
+    }
+
+    const roleAnnotationItem = {
+        hidden: { opacity: 0,  rotateY: -90},
+        show: {
+            opacity: 1,
+            rotateY: 0,
+        }
+    }
+
+    // const textDecorationLineJobTitle =  useTransform(
+    //     isJobTitleHovered,
+    //     [false, true],
+    //     ["none", "underline"]
+    // )
+
     return (
         <div id={id} className="h-[100vh] grid grid-cols-1 items-center justify-center overflow-x-hidden">
             <motion.div
-                className="z-[2] max-w-[100vw]"
+                className="z-[2] max-w-[100vw] mb-0"
                 variants={titleContainer}
                 initial="hidden"
                 animate="show"
@@ -116,7 +144,7 @@ export default function Hero({id, setIsTitleHovered, setIsSubtitleHovered}) {
                             className="relative"
                             initial="hidden"
                             animate={isNameHovered ? "show" : "hidden"}
-                            variants={laugtherContainer}
+                            variants={laughterContainer}
                         >
                             *laughter*
                         </motion.div>
@@ -124,13 +152,46 @@ export default function Hero({id, setIsTitleHovered, setIsSubtitleHovered}) {
                     
                 </div>
                 <div className="w-full flex justify-center items-center">
+                    <div className="absolute w-full pointer-events-none flex justify-center text-center">
+                        <motion.div
+                            className="relative font-handwriting text-[#356fdb] text-[2rem]"
+                            variants={roleAnnotationContainer}
+                            initial="hidden"
+                            animate={isJobTitleHovered ? "show": "hidden"}
+                        >
+                            {
+                                `or "full stack"?`.split("").map((letter, id) => {
+                                    return (
+                                        <motion.span
+                                            className="whitespace-pre"
+                                            variants={roleAnnotationItem}
+                                            key={id}
+                                        >
+                                            {letter}
+                                        </motion.span>
+                                    )
+                                })
+                            }
+                        </motion.div>
+                    </div>
                     <motion.h3
-                        onMouseEnter={() => {setIsSubtitleHovered(true)}}
-                        onMouseLeave={() => {setIsSubtitleHovered(false)}}
-                        className="text-[2rem] tracking-tight text-center text-white w-fit"
+                        onMouseEnter={() => {setIsSubtitleHovered(true); setIsJobTitleHovered(true);}}
+                        onMouseLeave={() => {setIsSubtitleHovered(false); setIsJobTitleHovered(false);}}
+                        className="text-[2rem] flex tracking-tight whitespace-pre text-center text-white w-fit"
                         variants={titleItem}  
                     >
-                        Fullstack Software Developer
+                        <motion.div
+                            initial={{textDecorationLine: "none"}}
+                            animate={isJobTitleHovered ? { textDecorationLine: "line-through"} : { textDecorationLine: "none"}}
+                            transition={{
+                                delay: 0.15,
+                                type: "tween",
+                                duration: 0.5,
+                                ease: [0.76, 0, 0.24, 1],
+                            }}
+                            style={{ textDecorationColor: "#356fdb", textDecorationThickness: "0.4rem" }}>
+                            Fullstack
+                        </motion.div> Software Developer
                     </motion.h3>
                 </div>
                 <div className="w-full flex justify-center items-center">
