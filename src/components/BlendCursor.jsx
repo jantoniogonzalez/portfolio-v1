@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 
 export default function BlendCursor({isTitleHovered, isSubtitleHovered}) {
-    const size = isTitleHovered ? 300 : isSubtitleHovered ? 200 : 40;
+    const size = isTitleHovered ? 175 : isSubtitleHovered ? 100 : 15;
     const colors = [
         
         "#c32d27",
