@@ -104,7 +104,7 @@ const Menu = ({isActive, setIsActive}) => {
             animate={isActive ? "open" : "closed"}
             initial="closed"
         >
-            <div className="flex items-center gap-x-[2rem] pl-[2rem] pr-[110px] h-full uppercase text-[1.5rem] font-logo font-semibold">
+            <div className="flex items-center gap-x-[2rem] pl-[2rem] pr-[110px] h-full uppercase text-[1.5rem] font-semibold font-semibold">
                 <Link onClick={() => setIsActive(false)} href="#experience">Experience</Link>
                 <Link onClick={() => setIsActive(false)} href="#projects">Projects</Link>
                 <Link onClick={() => setIsActive(false)} href="#about">About</Link>
@@ -127,14 +127,14 @@ const MenuButton = ({isActive, setIsActive}) => {
                     className="w-full h-full rounded-lg  flex items-center justify-center"
                     onClick={() => setIsActive(true)}
                 >
-                    <p className="text-white font-logo text-[1.5rem] uppercase m-0">Menu</p>
+                    <p className="text-white font-semibold text-[1.5rem] uppercase m-0">Menu</p>
                 </div>
                 </GsapMagnetic>
                 <div
                     className="w-full h-full bg-[#222222] rounded-lg z-[20] flex items-center justify-center relative"
                     onClick={() => setIsActive(false)}
                 >
-                    <p className="text-white font-logo text-[1.5rem] uppercase m-0">Close</p>
+                    <p className="text-white font-semibold text-[1.5rem] uppercase m-0">Close</p>
                 </div>
             </motion.div>
         </div>

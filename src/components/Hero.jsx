@@ -6,6 +6,8 @@ import Link from "next/link";
 
 export default function Hero({id, setIsTitleHovered, setIsSubtitleHovered}) {
     const [isNameHovered, setIsNameHovered] = useState(false);
+    const [isJobTitleHovered, setIsJobTitleHovered] = useState(false);
+    const [isCityHovered, setIsCityHovered] = useState(false);
 
     const titleContainer = {
         hidden: { opacity: 0.5, scale: 0.5, rotateX: 90 },
@@ -33,26 +35,39 @@ export default function Hero({id, setIsTitleHovered, setIsSubtitleHovered}) {
     }
 
     const nameWritingContainer = {
-        hidden: { opacity: 0, x: "-10%"},
+        hidden: {  opacity: 0,  rotateY: 0, rotateZ: -15},
         show: {
             opacity: 1,
-            x: 0,
+            rotateY: 0,
             transition: {
                 type: "tween",
                 duration: 0.4,
                 ease: [0.76, 0, 0.24, 1],
-                staggerChildren: 0.85,
-                delay: 0.25
+                staggerChildren: 0.1,
+                delay: 0.1
             }
         }
     }
 
     const nameWritingItem = {
-        hidden: { opacity: 0, x: "-10%", rotateZ: -15},
+        hidden: { opacity: 0,  rotateY: -90},
         show: {
             opacity: 1,
-            x: 0, 
-            rotateZ: -15,
+            rotateY: 0,
+        }
+    }
+
+    const laugtherContainer = {
+        hidden: { opacity: 0, rotateX: 90, rotateZ: 15, y: "25%"},
+        show: {
+            opacity: 1,
+            rotateX: 0,
+            transition: {
+                type: "tween",
+                duration: 0.4,
+                ease: [0.76, 0, 0.24, 1],
+                delay: 2.1
+            }
         }
     }
 
@@ -74,27 +89,37 @@ export default function Hero({id, setIsTitleHovered, setIsSubtitleHovered}) {
                         JUAN GONZALEZ
                     </motion.h1>
                     <div
-                        className="absolute w-[80%] lg:w-[60%] top-[-30%] md:top-[-45%]"
+                        className="absolute w-[80%] lg:w-[60%] top-[-30%] md:top-[-45%] flex justify-between font-handwriting text-[#f5c63f] text-[2rem]"
                     >
-                    <motion.div
-                        className="relative flex flex-col items-start text-center top-[-30%] md:top-[-45%]"
-                        variants={nameWritingContainer}
-                        initial="hidden"
-                        animate={isNameHovered ? "show" : "hidden"}
-                    >
-                        <motion.p
-                            className="font-handwriting text-[#f5c63f] text-[2rem] relative"
-                            variants={nameWritingItem}
+                        <motion.div
+                            className="relative flex items-start text-center top-[-30%] md:top-[-45%] "
+                            variants={nameWritingContainer}
+                            initial="hidden"
+                            animate={isNameHovered ? "show" : "hidden"}
                         >
-                            he be number juan!
-                        </motion.p>
-                        <motion.p
-                            className="font-handwriting text-[#f5c63f] text-[2rem] relative"
-                            variants={nameWritingItem}
+                            {
+                                    "he be number juan!".split("").map((letter, id) => {
+                                        return (
+                                            <motion.span
+                                                className="whitespace-pre"
+                                                variants={nameWritingItem}
+                                                key={id}
+                                            >
+                                                {letter}
+                                            </motion.span>
+                                        )
+                                    })
+                            }
+
+                        </motion.div>
+                        <motion.div
+                            className="relative"
+                            initial="hidden"
+                            animate={isNameHovered ? "show" : "hidden"}
+                            variants={laugtherContainer}
                         >
                             *laughter*
-                        </motion.p>
-                    </motion.div>
+                        </motion.div>
                     </div>
                     
                 </div>
