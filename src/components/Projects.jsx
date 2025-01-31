@@ -181,7 +181,7 @@ const LeftSideProject = ({projectImg, title, roles, description, technologies, g
 const ProjectText = ({title, roles, description, technologies, githubLink, demoLink}) => {
     return (
         <div>
-            <h3 className="text-white text-[2.5rem] font-logo uppercase">{title}</h3>
+            <h3 className="text-white text-[2.5rem] font-semibold tracking-tight uppercase">{title}</h3>
             <h4 className="text-slate-300 text-[1.5rem]">{roles}</h4>
             <p className="text-slate-50 text-[1.5rem]">{description}</p>
             <div className="flex items-center justify-between">
