@@ -3,7 +3,7 @@ import React from "react";
 
 export default function SectionSubtitle({titleName, setIsTitleHovered}) {
     return(
-        <div className="w-[80vw] py-[3rem]">
+        <div className="w-[80vw] 2xl:w-[50vw] py-[3rem]">
             <h2
                 onMouseEnter={() => {setIsTitleHovered(true)}}
                 onMouseLeave={() => {setIsTitleHovered(false)}}

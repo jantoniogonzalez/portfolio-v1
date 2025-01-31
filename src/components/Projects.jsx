@@ -52,7 +52,7 @@ export default function Projects({id, setIsTitleHovered, setIsSubtitleHovered}) 
                     }}
                 />
             </motion.div>
-            <div className="w-[80vw] flex flex-col gap-y-[3rem] relative  snap-center">
+            <div className="w-[80vw] 2xl:w-[50vw] flex flex-col gap-y-[3rem] relative  snap-center">
                 <RightSideProject
                     projectImg={FactosPic}
                     title="Factos"

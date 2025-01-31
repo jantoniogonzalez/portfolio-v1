@@ -120,7 +120,7 @@ export default function WorkAbout({id, setIsTitleHovered, setIsSubtitleHovered})
             
             <motion.div
                 style={{scaleX: scaleXTabs, scaleY: scaleYTabs }}
-                className="w-[80vw] relative"
+                className="w-[80vw] 2xl:w-[50vw] relative"
                 // The rotateX can be transformed like , rotateX: (1-scrollYProgress)*90 window
             >
                 <div
@@ -152,7 +152,7 @@ export default function WorkAbout({id, setIsTitleHovered, setIsSubtitleHovered})
                     className="relative"
                 >
                 <motion.div
-                    className="absolute w-[80vw]"
+                    className="absolute w-[80vw] 2xl:w-[50vw]"
                     variants={cardsVariants}
                     initial="open"
                     animate={ isWork ? "open" : "closedLeft"}
@@ -174,7 +174,7 @@ export default function WorkAbout({id, setIsTitleHovered, setIsSubtitleHovered})
                     </Card>
                 </motion.div>
                 <motion.div
-                    className="absolute w-[80vw]"
+                    className="absolute w-[80vw] 2xl:w-[50vw]"
                     variants={cardsVariants}
                     initial="closedRight"
                     animate={ isWork ? "closedRight" : "open"}
