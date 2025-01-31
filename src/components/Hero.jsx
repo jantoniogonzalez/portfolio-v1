@@ -5,8 +5,8 @@ import { useTransform , motion } from "motion/react";
 import Link from "next/link";
 
 export default function Hero({id, setIsTitleHovered, setIsSubtitleHovered}) {
+    const [isNameHovered, setIsNameHovered] = useState(false);
 
-    const titleTransition = {type: "spring", bounce: 0.1, duration: 2, delay: 0.5}
     const titleContainer = {
         hidden: { opacity: 0.5, scale: 0.5, rotateX: 90 },
         show: {
@@ -32,6 +32,30 @@ export default function Hero({id, setIsTitleHovered, setIsSubtitleHovered}) {
         }
     }
 
+    const nameWritingContainer = {
+        hidden: { opacity: 0, x: "-10%"},
+        show: {
+            opacity: 1,
+            x: 0,
+            transition: {
+                type: "tween",
+                duration: 0.4,
+                ease: [0.76, 0, 0.24, 1],
+                staggerChildren: 0.85,
+                delay: 0.25
+            }
+        }
+    }
+
+    const nameWritingItem = {
+        hidden: { opacity: 0, x: "-10%", rotateZ: -15},
+        show: {
+            opacity: 1,
+            x: 0, 
+            rotateZ: -15,
+        }
+    }
+
     return (
         <div id={id} className="h-[100vh] grid grid-cols-1 items-center justify-center overflow-x-hidden">
             <motion.div
@@ -40,15 +64,39 @@ export default function Hero({id, setIsTitleHovered, setIsSubtitleHovered}) {
                 initial="hidden"
                 animate="show"
             >
-                <div className="w-full flex justify-center items-center">
+                <div className="w-full flex justify-center items-center relative">
                     <motion.h1
-                        onMouseEnter={() => {setIsTitleHovered(true)}}
-                        onMouseLeave={() => {setIsTitleHovered(false)}}
+                        onMouseEnter={() => {setIsTitleHovered(true); setIsNameHovered(true)}}
+                        onMouseLeave={() => {setIsTitleHovered(false); setIsNameHovered(false)}}
                         className="text-[6rem] tracking-[-0.5rem] text-center text-white mb-3 font-bold w-fit"
                         variants={titleItem}
                     >
                         JUAN GONZALEZ
                     </motion.h1>
+                    <div
+                        className="absolute w-[80%] lg:w-[60%] top-[-30%] md:top-[-45%]"
+                    >
+                    <motion.div
+                        className="relative flex flex-col items-start text-center top-[-30%] md:top-[-45%]"
+                        variants={nameWritingContainer}
+                        initial="hidden"
+                        animate={isNameHovered ? "show" : "hidden"}
+                    >
+                        <motion.p
+                            className="font-handwriting text-[#f5c63f] text-[2rem] relative"
+                            variants={nameWritingItem}
+                        >
+                            he be number juan!
+                        </motion.p>
+                        <motion.p
+                            className="font-handwriting text-[#f5c63f] text-[2rem] relative"
+                            variants={nameWritingItem}
+                        >
+                            *laughter*
+                        </motion.p>
+                    </motion.div>
+                    </div>
+                    
                 </div>
                 <div className="w-full flex justify-center items-center">
                     <motion.h3

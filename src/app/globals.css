@@ -74,9 +74,19 @@
 }
 
 html {
-  font-size: 90%; /* 1rem = 10px */
+  font-size: 130%; /* 1rem = 10px */
 }
 
+@media (max-width: 1920px){
+  html {
+    font-size: 100%; /* 1rem = 10px */
+  }
+}
+@media (max-width: 1360px){
+  html {
+    font-size: 90%; /* 1rem = 10px */
+  }
+}
 @media (max-width: 768px) {
   html {
     font-size: 70%; /* 1rem = 8px on smaller screens */

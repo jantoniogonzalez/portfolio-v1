@@ -95,7 +95,7 @@ export default function WorkAbout({id, setIsTitleHovered, setIsSubtitleHovered})
 
 
     return (
-        <div id={id} ref={ref} className="min-h-[100vh] py-[2rem] flex flex-col items-center">
+        <div id={id} ref={ref} className="min-h-[100vh] py-[2rem] lg:mb-10 flex flex-col items-center">
             <motion.div
                 style={{x: xSubtitle}}
                 className="z-[1]"
@@ -120,7 +120,7 @@ export default function WorkAbout({id, setIsTitleHovered, setIsSubtitleHovered})
             
             <motion.div
                 style={{scaleX: scaleXTabs, scaleY: scaleYTabs }}
-                className="w-[80vw]"
+                className="w-[80vw] relative"
                 // The rotateX can be transformed like , rotateX: (1-scrollYProgress)*90 window
             >
                 <div

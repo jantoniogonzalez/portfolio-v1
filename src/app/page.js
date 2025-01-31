@@ -14,7 +14,7 @@ export default function Home() {
   const [isSubtitleHovered, setIsSubtitleHovered] = useState(false);
 
   return (
-    <main className="bg-[#222222]">
+    <main className="bg-[#222222] ">
       <BlendCursor isTitleHovered={isTitleHovered} isSubtitleHovered={isSubtitleHovered} />
       <Header setIsSubtitleHovered={setIsSubtitleHovered} setIsTitleHovered={setIsTitleHovered} />
       <Hero id="hero" setIsSubtitleHovered={setIsSubtitleHovered} setIsTitleHovered={setIsTitleHovered}/>

@@ -61,7 +61,8 @@ export default {
 	},
 	fontFamily: {
 		'logo': ['var(--font-kenia)'],
-	}
+		'handwriting': ['var(--font-permanent-marker)']
+	},
   },
   plugins: [require("tailwindcss-animate")],
 };
